@@ -1,0 +1,8 @@
+prefix=/home/luc/ros_workspace/alg_robo_p1/catkin/devel
+
+Name: stdr_world
+Description: Description of stdr_world
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib 
+Requires: 

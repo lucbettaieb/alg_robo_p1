@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "stdr_world")
+set(stdr_world_MAINTAINER "luc <luc@todo.todo>")
+set(stdr_world_DEPRECATED "")
+set(stdr_world_VERSION "0.0.0")
+set(stdr_world_BUILD_DEPENDS "roscpp" "std_msgs")
+set(stdr_world_RUN_DEPENDS "roscpp" "std_msgs")
+set(stdr_world_BUILDTOOL_DEPENDS "catkin")
