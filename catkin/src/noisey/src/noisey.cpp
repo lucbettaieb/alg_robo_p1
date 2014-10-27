@@ -32,8 +32,8 @@ int main(int argc, char** argv){
 	ros::init(argc, argc, "noisey")
 
 }
-
-//Callback function for when node recieves a signal value (should be always)
+ 
+//Callback function for when node recieves a signal value (should be forever)
 float addNoise(const std_msgs::Float64 &signal){
 	return distribution(signal.data); //simply trying to use the input to the dist. as the sigval
 }
