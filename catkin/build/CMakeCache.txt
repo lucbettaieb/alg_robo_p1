@@ -232,6 +232,9 @@ _CATKIN_GTEST_INCLUDE:FILEPATH=/usr/include/gtest/gtest.h
 //Path to a file.
 _CATKIN_GTEST_SRC:FILEPATH=/usr/src/gtest/src/gtest.cc
 
+//The directory containing a CMake configuration file for actionlib_msgs.
+actionlib_msgs_DIR:PATH=/opt/ros/hydro/share/actionlib_msgs/cmake
+
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/hydro/share/catkin/cmake
 
@@ -243,6 +246,21 @@ ekf_BINARY_DIR:STATIC=/home/luc/ros_workspace/alg_robo_p1/catkin/build/ekf
 
 //Value Computed by CMake
 ekf_SOURCE_DIR:STATIC=/home/luc/ros_workspace/alg_robo_p1/catkin/src/ekf
+
+//The directory containing a CMake configuration file for gencpp.
+gencpp_DIR:PATH=/opt/ros/hydro/share/gencpp/cmake
+
+//The directory containing a CMake configuration file for genlisp.
+genlisp_DIR:PATH=/opt/ros/hydro/share/genlisp/cmake
+
+//The directory containing a CMake configuration file for genmsg.
+genmsg_DIR:PATH=/opt/ros/hydro/share/genmsg/cmake
+
+//The directory containing a CMake configuration file for genpy.
+genpy_DIR:PATH=/opt/ros/hydro/share/genpy/cmake
+
+//The directory containing a CMake configuration file for geometry_msgs.
+geometry_msgs_DIR:PATH=/opt/ros/hydro/share/geometry_msgs/cmake
 
 //Value Computed by CMake
 gtest_BINARY_DIR:STATIC=/home/luc/ros_workspace/alg_robo_p1/catkin/build/gtest
@@ -275,6 +293,15 @@ lib:FILEPATH=/opt/ros/hydro/lib/libxmlrpcpp.so
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/hydro/share/message_runtime/cmake
 
+//The directory containing a CMake configuration file for nav_msgs.
+nav_msgs_DIR:PATH=/opt/ros/hydro/share/nav_msgs/cmake
+
+//Value Computed by CMake
+noisey_BINARY_DIR:STATIC=/home/luc/ros_workspace/alg_robo_p1/catkin/build/noisey
+
+//Value Computed by CMake
+noisey_SOURCE_DIR:STATIC=/home/luc/ros_workspace/alg_robo_p1/catkin/src/noisey
+
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/hydro/share/rosconsole/cmake
 
@@ -293,8 +320,14 @@ rosgraph_msgs_DIR:PATH=/opt/ros/hydro/share/rosgraph_msgs/cmake
 //The directory containing a CMake configuration file for rostime.
 rostime_DIR:PATH=/opt/ros/hydro/share/rostime/cmake
 
+//The directory containing a CMake configuration file for sensor_msgs.
+sensor_msgs_DIR:PATH=/opt/ros/hydro/share/sensor_msgs/cmake
+
 //The directory containing a CMake configuration file for std_msgs.
 std_msgs_DIR:PATH=/opt/ros/hydro/share/std_msgs/cmake
+
+//The directory containing a CMake configuration file for stdr_msgs.
+stdr_msgs_DIR:PATH=/opt/ros/hydro/share/stdr_msgs/cmake
 
 //Value Computed by CMake
 stdr_world_BINARY_DIR:STATIC=/home/luc/ros_workspace/alg_robo_p1/catkin/build/stdr_world
@@ -409,7 +442,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=4
+CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=5
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
