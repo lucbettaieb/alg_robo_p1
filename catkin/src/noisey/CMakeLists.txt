@@ -8,6 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
   stdr_msgs
+  sensor_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -102,18 +103,25 @@ include_directories(
 #   src/${PROJECT_NAME}/noisey.cpp
 # )
 
+#----------------------------------------------
 ## Declare a cpp executable
-# add_executable(noisey_node src/noisey_node.cpp)
+
+
+add_executable(noisey src/noisey.cpp)
+
+
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
 # add_dependencies(noisey_node noisey_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(noisey_node
-#   ${catkin_LIBRARIES}
-# )
+target_link_libraries(noisey
+   ${catkin_LIBRARIES}
+)
 
+
+#----------------------------------------------
 #############
 ## Install ##
 #############

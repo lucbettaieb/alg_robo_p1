@@ -6,4 +6,5 @@
 # testing this directory and lists subdirectories to be tested as well.
 SUBDIRS(gtest)
 SUBDIRS(ekf)
+SUBDIRS(noisey)
 SUBDIRS(stdr_world)
