@@ -5,4 +5,4 @@ PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "noisey"
 PROJECT_SPACE_DIR = "/home/luc/ros_workspace/alg_robo_p1/catkin/devel"
-PROJECT_VERSION = "0.0.0"
+PROJECT_VERSION = "0.0.1"
