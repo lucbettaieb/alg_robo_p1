@@ -14,7 +14,7 @@
 #include <sensor_msgs/LaserScan.h>
 #include <ctime>
 #include <stdlib.h>
-//#include <random> 
+#include <random> 
 #include <stdio.h>
 #define countof( array ) ( sizeof( array )/sizeof( array[0] ) )
 ros::Publisher pub_;
@@ -38,7 +38,7 @@ void addNoiseLaser(const sensor_msgs::LaserScan &scan){ //need to get sensor_msg
 	std::srand(time(0));
 	int randomNumber = std::rand() % 1;
 
-	for(int i = 0; i < countof(scan.intensities); i++){ //TODO: Check if length function of float32[] is real\
+	for(int i = 0; i < countof(scan.intensities); i++){ //TODO: Check if length function of float32[] is real
 		if( randomNumber >= (1-SNR) ){ //should converge on SNR over time for all the signal noise n stuff.  I could test this.  See if LaserScan.intensity[i] / NoiseyScan.intensity[i] == 1 or not, then divide the nots by the 1's and that should equal SNR after a while 
 			noiseyScan.intensities[i] = distribution(scan.intensities[i]);
 		} else{

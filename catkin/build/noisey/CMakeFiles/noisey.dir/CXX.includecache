@@ -9,13 +9,17 @@
 /home/luc/ros_workspace/alg_robo_p1/catkin/src/noisey/src/noisey.cpp
 ros/ros.h
 -
-std_msgs
+std_msgs/Float32.h
 -
-sensor_msgs
+sensor_msgs/LaserScan.h
 -
 ctime
 -
-cstdlib
+stdlib.h
+-
+random
+-
+stdio.h
 -
 
 /opt/ros/hydro/include/XmlRpcDecl.h
@@ -234,6 +238,10 @@ boost/make_shared.hpp
 
 /opt/ros/hydro/include/ros/message_forward.h
 memory
+-
+
+/opt/ros/hydro/include/ros/message_operations.h
+ostream
 -
 
 /opt/ros/hydro/include/ros/message_traits.h
@@ -653,4 +661,54 @@ ros/forwards.h
 /opt/ros/hydro/include/ros/ros/forwards.h
 
 /opt/ros/hydro/include/rosconsole/macros_generated.h
+
+/opt/ros/hydro/include/sensor_msgs/LaserScan.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
+-
+
+/opt/ros/hydro/include/std_msgs/Float32.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
+/opt/ros/hydro/include/std_msgs/Header.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
 
