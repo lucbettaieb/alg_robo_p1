@@ -122,7 +122,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/luc/ros_workspace/alg_robo_p1/catkin/install/lib;/home/luc/ros_workspace/hku_drc_class/catkin/devel/lib;/opt/ros/hydro/lib)
+    foreach(path /home/luc/ros_workspace/alg_robo_p1/catkin/install/lib;/opt/ros/hydro/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
