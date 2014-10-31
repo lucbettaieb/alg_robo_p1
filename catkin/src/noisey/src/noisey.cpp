@@ -45,6 +45,9 @@ float addGaussianNoise(const float &variance){
 void addNoiseLaser(const sensor_msgs::LaserScan &scan){ //need to get sensor_msgs/LaserScan, iterate through ranges[] and add noise then publish new laserscan
 	ROS_INFO("Adding noise...");
 
+	float maxRange = 0;
+	float minRange = 1000;
+
 	sensor_msgs::LaserScan noiseyScan;
 
 	std::srand(time(0));
@@ -52,8 +55,14 @@ void addNoiseLaser(const sensor_msgs::LaserScan &scan){ //need to get sensor_msg
 
 	noiseyScan.ranges.resize(scan.ranges.size());
 	for(int i = 0; i < 667; i++){ 
+
 		noiseyScan.ranges[i] = scan.ranges[i] + addGaussianNoise(.03);
+		if(maxRange < noiseyScan.ranges[i] && noiseyScan.ranges[i] != INFINITY) maxRange = noiseyScan.ranges[i];
+		if(minRange > noiseyScan.ranges[i]) minRange = noiseyScan.ranges[i];
 	}
+
+	noiseyScan.range_min = minRange;
+	noiseyScan.range_max = maxRange;
 
 	pub_.publish(noiseyScan);
 }
