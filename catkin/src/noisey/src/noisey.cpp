@@ -54,9 +54,10 @@ void addNoiseLaser(const sensor_msgs::LaserScan &scan){ //need to get sensor_msg
 	int randomNumber = std::rand() % 1;
 
 	noiseyScan.ranges.resize(scan.ranges.size());
-	for(int i = 0; i < 667; i++){ 
-
-		noiseyScan.ranges[i] = scan.ranges[i] + addGaussianNoise(.03);
+	
+	for(int i = 0; i < scan.ranges.size(); i++){ 
+		noiseyScan.ranges[i] = scan.ranges[i] + addGaussianNoise(.008);
+		
 		if(maxRange < noiseyScan.ranges[i] && noiseyScan.ranges[i] != INFINITY) maxRange = noiseyScan.ranges[i];
 		if(minRange > noiseyScan.ranges[i]) minRange = noiseyScan.ranges[i];
 	}
@@ -64,6 +65,11 @@ void addNoiseLaser(const sensor_msgs::LaserScan &scan){ //need to get sensor_msg
 	noiseyScan.range_min = minRange;
 	noiseyScan.range_max = maxRange;
 
+	//Copying over necessary things for the new LaserScan
+	noiseyScan.header = scan.header;
+	noiseyScan.angle_min = scan.angle_min;
+	noiseyScan.angle_max = scan.angle_max;
+	noiseyScan.angle_increment = scan.angle_increment;
 	pub_.publish(noiseyScan);
 }
 
