@@ -1,3 +1,3 @@
-<h3>Project 1 for EECS 600 Algorithmic Robotic</h3>
-Will be:<br>
-<li>Implementing stuff using ROS and STDR Simulator</li>
+<h3>Algorithmic Robotics, Project 1</h3>
+<p>The purpose of this project will be to implement a robot using STDR simulator (http://stdr-simulator-ros-pkg.github.io/) that will be able to wander through an environment using a simple, constrained motion planning algorithm and localize using filtering techniques.</p>
+<p>If time permits, I will also construct an occupancy grid map using a similar technique.</p>

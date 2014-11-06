@@ -1,12 +1,12 @@
 /*
 * Noisey
 * A ROS Node to subscribe to a stream of simulated sensor data, add Gaussian noise to it,
-* and republish it for probabilisitc-based filtering.
+* and republish it for probabalistic-based filtering.
 *
 * Luc A. Bettaieb
 * bettaieb@case.edu
 *
-* 22.10.14
+* 10.22.14 (Began work)
 */
 
 #include <ros/ros.h>
@@ -82,8 +82,7 @@ int main(int argc, char** argv){
 	//Init random number generator with time seed
 
 	pub_ = nh.advertise<sensor_msgs::LaserScan>("noiseyScan", 1);
-	sub_ = nh.subscribe("/robot0/laser_0", 10, addNoiseLaser); //make sure its robot0...  This may need to be fixed
-	ros::spinOnce();
+	sub_ = nh.subscribe("/robot0/laser_0", 10, addNoiseLaser); //make sure its robot0!
 	
  	ros::spin();
  	return 0;
