@@ -6,7 +6,7 @@
 * Luc A. Bettaieb
 * bettaieb@case.edu
 * 
-* 11.6.4 (Began work)
+* 11.6.14 (Began work) 11.7.14 (Works)
 */
 
 #include <ros/ros.h>
@@ -19,12 +19,28 @@ ros::Subscriber sub_realOdom_;
 
 nav_msgs::Odometry realOdom_;
 
-const float moveTime = 0.5;
+const float moveTime = 1;
 
 geometry_msgs::Twist stuffTwistWithVel(int select, float vel){
 	geometry_msgs::Twist cmd;
-	//cmd.linear.x
-	//cmd.angular.z
+	
+	cmd.linear.x = 0;
+	cmd.linear.y = 0;
+	cmd.linear.z = 0;
+	
+	cmd.angular.x = 0;
+	cmd.angular.y = 0;
+	cmd.angular.z = 0;
+	if(select == 0){ 		//Translational
+		cmd.linear.x = vel;
+
+	} else if(select == 1){	//Rotational
+		cmd.angular.z = vel;
+
+	} else{					//Zero
+		return cmd;
+
+	}
 
 }
 
@@ -36,7 +52,7 @@ int main(int argc, char** argv){
 	int tranRotSel = -1;
 	float velocity = 0.0;
 
-	pub_vel_ = nh.advertise<"/robot/cmd_vel", 1>;  //Set up the publisher to publish to the robots cmd_vel
+	pub_vel_ = nh.advertise<geometry_msgs::Twist>("/robot0/cmd_vel", 1);  //Set up the publisher to publish to the robots cmd_vel
 
 	std::cout << "(!!!) Be aware!  All commands excecute for "<< moveTime << " seconds!" << std::endl;
 	ROS_INFO("Starting interactive loop...");
@@ -50,12 +66,24 @@ int main(int argc, char** argv){
 			std::cout << "Enter the value in meters/second for your translational command: ";
 			std::cin >> velocity;
 
-			ROS_INFO("Sending velocity command..")
 
+			ROS_INFO("Sending translational velocity command..");
+			pub_vel_.publish(stuffTwistWithVel(0,velocity));
+			ros::Duration(moveTime).sleep();
+			pub_vel_.publish(stuffTwistWithVel(2,velocity));
 
 		} else if (tranRotSel == 1){	//Rotational Command
 			std::cout << "Enter the value in rads/second for your rotational command: ";
 			std::cin >> velocity;
+
+
+			ROS_INFO("Sending rotational velocity command..");
+			pub_vel_.publish(stuffTwistWithVel(1,velocity));
+			ros::Duration(moveTime).sleep();
+			pub_vel_.publish(stuffTwistWithVel(2,velocity));
+
+		} else{
+			ros::shutdown();
 		}
 
 		ros::spinOnce();
