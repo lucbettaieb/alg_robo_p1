@@ -16,9 +16,12 @@
 #include <geometry_msgs/Twist.h>
 
 ros::Publisher pub_;	//To publish the odom with variance derived from vel
-ros::Subscriber sub_;	//To subscribe to cmd_vel
+ros::Subscriber sub_cmd_vel_;	//To subscribe to cmd_vel
+ros::Subscriber sub_realOdom_;
 
-void updateOdom(const geometry_msgs::Twist &cmdvel){
+nav_msgs::Odometry realOdom_;
+
+void updateVel_model(const geometry_msgs::Twist &cmdvel){
 	ROS_INFO("Got new cmd_vel, updating vel_model.");
 
 	nav_msgs::Odometry velocity_model;
@@ -28,12 +31,17 @@ void updateOdom(const geometry_msgs::Twist &cmdvel){
 	return velocity_model;
 }
 
+void updateRealOdom(const nav_msgs::Odometry &odom){
+	realOdom_ = odom;
+}
+
 int main(int argc, char** argv){
 	ros::init(argc, argv, "vel_model");
 	ros::NodeHandle nh;
 
 	pub_ = nh.advertise<nav_msgs::Odometry>("vel_model", 1);
-	sub_ = nh.subscribe("/robot0/cmd_vel", 10, updateOdom);
+	sub_cmd_vel_ = nh.subscribe("/robot0/cmd_vel", 10, updateVel_model);
+	sub_realOdom_ = nh.subscribe("/robot0/odom", 10, updateRealOdom)
 
 	ros::spin();
 	return 0;

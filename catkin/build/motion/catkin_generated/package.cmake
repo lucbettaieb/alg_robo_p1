@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "motion")
+set(motion_MAINTAINER "luc <luc@todo.todo>")
+set(motion_DEPRECATED "")
+set(motion_VERSION "0.0.0")
+set(motion_BUILD_DEPENDS "geometry_msgs" "nav_msgs" "roscpp" "std_msgs")
+set(motion_RUN_DEPENDS "geometry_msgs" "nav_msgs" "roscpp" "std_msgs")
+set(motion_BUILDTOOL_DEPENDS "catkin")

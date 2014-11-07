@@ -247,6 +247,12 @@ ekf_BINARY_DIR:STATIC=/home/luc/ros_workspace/alg_robo_p1/catkin/build/ekf
 //Value Computed by CMake
 ekf_SOURCE_DIR:STATIC=/home/luc/ros_workspace/alg_robo_p1/catkin/src/ekf
 
+//Value Computed by CMake
+filters_BINARY_DIR:STATIC=/home/luc/ros_workspace/alg_robo_p1/catkin/build/filters
+
+//Value Computed by CMake
+filters_SOURCE_DIR:STATIC=/home/luc/ros_workspace/alg_robo_p1/catkin/src/filters
+
 //The directory containing a CMake configuration file for gencpp.
 gencpp_DIR:PATH=/opt/ros/hydro/share/gencpp/cmake
 
@@ -292,6 +298,12 @@ lib:FILEPATH=/opt/ros/hydro/lib/libxmlrpcpp.so
 
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/hydro/share/message_runtime/cmake
+
+//Value Computed by CMake
+motion_BINARY_DIR:STATIC=/home/luc/ros_workspace/alg_robo_p1/catkin/build/motion
+
+//Value Computed by CMake
+motion_SOURCE_DIR:STATIC=/home/luc/ros_workspace/alg_robo_p1/catkin/src/motion
 
 //The directory containing a CMake configuration file for nav_msgs.
 nav_msgs_DIR:PATH=/opt/ros/hydro/share/nav_msgs/cmake
@@ -442,7 +454,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=5
+CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=6
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

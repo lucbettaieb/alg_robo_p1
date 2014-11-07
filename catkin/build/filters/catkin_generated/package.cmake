@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "filters")
+set(filters_MAINTAINER "luc <luc@todo.todo>")
+set(filters_DEPRECATED "")
+set(filters_VERSION "0.0.0")
+set(filters_BUILD_DEPENDS "roscpp" "std_msgs" "stdr_msgs")
+set(filters_RUN_DEPENDS "roscpp" "std_msgs" "stdr_msgs")
+set(filters_BUILDTOOL_DEPENDS "catkin")
