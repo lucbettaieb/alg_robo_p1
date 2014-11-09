@@ -11,9 +11,10 @@
 */
 
 #include <ros/ros.h>
-#include <Eigen/Eigen>
+//#include <Eigen/Eigen>
 #include <nav_msgs/Odometry.h>
 #include <geometry_msgs/Twist.h>
+#include <math.h>
 
 ros::Publisher pub_;	//To publish the odom with variance derived from vel
 ros::Subscriber sub_cmd_vel_;	//To subscribe to cmd_vel
@@ -26,9 +27,9 @@ void updateVel_model(const geometry_msgs::Twist &cmdvel){
 
 	nav_msgs::Odometry velocity_model;
 	//Do dat state space stuff and update the vel_model
+	velocity_model.pose.pose.position.x = realOdom_.pose.pose.position.x + 
 
-
-	return velocity_model;
+	pub_.publish(velocity_model);
 }
 
 void updateRealOdom(const nav_msgs::Odometry &odom){
@@ -40,8 +41,9 @@ int main(int argc, char** argv){
 	ros::NodeHandle nh;
 
 	pub_ = nh.advertise<nav_msgs::Odometry>("vel_model", 1);
+
 	sub_cmd_vel_ = nh.subscribe("/robot0/cmd_vel", 10, updateVel_model);
-	sub_realOdom_ = nh.subscribe("/robot0/odom", 10, updateRealOdom)
+	sub_realOdom_ = nh.subscribe("/robot0/odom", 10, updateRealOdom);
 
 	ros::spin();
 	return 0;

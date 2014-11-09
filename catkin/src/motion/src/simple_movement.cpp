@@ -19,7 +19,7 @@ ros::Subscriber sub_realOdom_;
 
 nav_msgs::Odometry realOdom_;
 
-const float moveTime = 1;
+const float moveTime = 1;  //NOTE!!!  If this is changed, please change in vel_model, too!
 
 geometry_msgs::Twist stuffTwistWithVel(int select, float vel){
 	geometry_msgs::Twist cmd;
