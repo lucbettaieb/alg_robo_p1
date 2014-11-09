@@ -28,7 +28,7 @@ bool timeToUpdateOdom = true;
 void updateVel_model(const geometry_msgs::Twist &cmdvel){
 	ROS_INFO("Got new cmd_vel, updating vel_model.");
 	timeToUpdateOdom = true; //Allow for a new true odom measurement to be gathered
-	
+
 	if(!(cmdvel.linear.x == 0 && cmdvel.angular.z == 0)){
 		nav_msgs::Odometry velocity_model;
 
@@ -39,9 +39,11 @@ void updateVel_model(const geometry_msgs::Twist &cmdvel){
 
 		//Updating model's X with previous
 		velocity_model.pose.pose.position.x = realOdom_.pose.pose.position.x + cos(cmdvel.angular.z) * moveTime * cmdvel.linear.x;
-		velocity_model.pose.pose.position.y = realOdom_.pose.pose.position.y + sin(cmdvel.angular.z) * moveTime * cmdvel.linear.x;
+		velocity_model.pose.pose.position.y = realOdom_.pose.pose.position.y + sin(cmdvel.angular.z) * moveTime * cmdvel.linear.y;
 
-		velocity_model.pose.pose.orientation.w = realOdom_.pose.pose.orientation.w + moveTime * cmdvel.angular.z;
+		//Something is wrong with this line of code.
+		//I need to update the quaternion correctly and I have no idea.
+		velocity_model.pose.pose.orientation.w = (1/M_PI)*atan(abs(realOdom_.pose.pose.orientation.z/realOdom_.pose.pose.orientation.w)) + (moveTime * cmdvel.angular.z)/M_PI;
 
 		
 

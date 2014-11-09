@@ -74,9 +74,9 @@ int main(int argc, char** argv){
 			pub_vel_.publish(stuffTwistWithVel(2,velocity));
 
 		} else if (tranRotSel == 1){	//Rotational Command
-			std::cout << "Enter the value in rads/second for your rotational command: ";
+			std::cout << "Enter the value in rads/second for your rotational command (will be *'d by pi: ";
 			std::cin >> velocity;
-
+			velocity *= 3.14159265359; //convert to radians
 
 			ROS_INFO("Sending rotational velocity command..");
 			pub_vel_.publish(stuffTwistWithVel(1,velocity));

@@ -93,6 +93,7 @@ IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   INCLUDE("/home/luc/ros_workspace/alg_robo_p1/catkin/build/motion/cmake_install.cmake")
   INCLUDE("/home/luc/ros_workspace/alg_robo_p1/catkin/build/noisey/cmake_install.cmake")
   INCLUDE("/home/luc/ros_workspace/alg_robo_p1/catkin/build/stdr_world/cmake_install.cmake")
+  INCLUDE("/home/luc/ros_workspace/alg_robo_p1/catkin/build/algp1_msgs/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 

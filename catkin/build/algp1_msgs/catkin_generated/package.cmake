@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "algp1_msgs")
+set(algp1_msgs_MAINTAINER "luc <luc@todo.todo>")
+set(algp1_msgs_DEPRECATED "")
+set(algp1_msgs_VERSION "0.0.0")
+set(algp1_msgs_BUILD_DEPENDS "std_msgs" "geometry_msgs" "message_generation" "actionlib" "actionlib_msgs" "trajectory_msgs")
+set(algp1_msgs_RUN_DEPENDS "std_msgs" "geometry_msgs" "message_runtime" "actionlib" "actionlib_msgs" "trajectory_msgs")
+set(algp1_msgs_BUILDTOOL_DEPENDS "catkin" "catkin_simple")
