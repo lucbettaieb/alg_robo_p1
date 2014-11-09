@@ -31,6 +31,7 @@ geometry_msgs::Twist stuffTwistWithVel(int select, float vel){
 	cmd.angular.x = 0;
 	cmd.angular.y = 0;
 	cmd.angular.z = 0;
+	
 	if(select == 0){ 		//Translational
 		cmd.linear.x = vel;
 

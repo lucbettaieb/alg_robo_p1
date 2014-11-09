@@ -9,11 +9,11 @@
 /home/luc/ros_workspace/alg_robo_p1/catkin/src/filters/src/vel_model.cpp
 ros/ros.h
 -
-Eigen/Eigen
--
 nav_msgs/Odometry.h
 -
 geometry_msgs/Twist.h
+-
+math.h
 -
 
 /opt/ros/hydro/include/XmlRpcDecl.h
