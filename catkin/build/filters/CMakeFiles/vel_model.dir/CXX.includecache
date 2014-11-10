@@ -15,6 +15,8 @@ geometry_msgs/Twist.h
 -
 math.h
 -
+stdio.h
+-
 
 /opt/ros/hydro/include/XmlRpcDecl.h
 ros/macros.h

@@ -15,6 +15,7 @@
 #include <nav_msgs/Odometry.h>
 #include <geometry_msgs/Twist.h>
 #include <math.h>
+#include <stdio.h>
 
 ros::Publisher pub_;	//To publish the odom with variance derived from vel
 ros::Subscriber sub_cmd_vel_;	//To subscribe to cmd_vel
@@ -29,7 +30,7 @@ void updateVel_model(const geometry_msgs::Twist &cmdvel){
 	ROS_INFO("Got new cmd_vel, updating vel_model.");
 	timeToUpdateOdom = true; //Allow for a new true odom measurement to be gathered
 
-	if(!(cmdvel.linear.x == 0 && cmdvel.angular.z == 0)){
+	//if(!(cmdvel.linear.x == 0 && cmdvel.angular.z == 0)){
 		nav_msgs::Odometry velocity_model;
 
 		
@@ -43,19 +44,29 @@ void updateVel_model(const geometry_msgs::Twist &cmdvel){
 
 		//Something is wrong with this line of code.
 		//I need to update the quaternion correctly and I have no idea.
-		velocity_model.pose.pose.orientation.w = (1/M_PI)*atan(abs(realOdom_.pose.pose.orientation.z/realOdom_.pose.pose.orientation.w)) + (moveTime * cmdvel.angular.z)/M_PI;
+		//velocity_model.pose.pose.orientation.w = (1/3.14159)*atan(abs(realOdom_.pose.pose.orientation.z/realOdom_.pose.pose.orientation.w)) + (moveTime * cmdvel.angular.z)/3.14159;
 
+		//std::cout << realOdom_.pose.pose.orientation.z << "prevZ" << std::endl;
+		//std::cout << realOdom_.pose.pose.orientation.w << "prevW" << std::endl;
+		//std::cout << cmdvel.angular.z << "cmdVel z" << std::endl;
+		//velocity_model.pose.pose.orientation.w = (1/3.14159)*atan2(realOdom_.pose.pose.orientation.z,realOdom_.pose.pose.orientation.w) + (moveTime * cmdvel.angular.z)/3.14159;
 		
+		velocity_model.pose.pose.orientation.w = (1/M_PI)*(2*acos(realOdom_.pose.pose.orientation.w) + (moveTime * cmdvel.angular.z));
+		
+		//if(velocity_model.pose.pose.orientation.)
+		// if(velocity_model.pose.pose.orientation.w > 1.99){ //If at 2pi, go back to 0 (full rotation)  (kind of hacky because of the 1.99)
+		// 	velocity_model.pose.pose.orientation.w = 0;
+		// }
 
 		pub_.publish(velocity_model);
-	}
+	//}
 }
 
 void updateRealOdom(const nav_msgs::Odometry &odom){
-	if(timeToUpdateOdom){
+	//if(timeToUpdateOdom){
 		realOdom_ = odom;  //make this update only after the velocity_model has been updated so it can keep track of the odom before a perturbation has been applied
 		timeToUpdateOdom = false;
-	}
+	//}
 }
 
 int main(int argc, char** argv){
@@ -66,8 +77,7 @@ int main(int argc, char** argv){
 	sub_realOdom_ = nh.subscribe("/robot0/odom", 10, updateRealOdom);
 	sub_cmd_vel_ = nh.subscribe("/robot0/cmd_vel", 10, updateVel_model);
 
-
-
+	
 
 	ros::spin();
 	return 0;
