@@ -89,11 +89,11 @@ ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unsp
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   INCLUDE("/home/luc/ros_workspace/alg_robo_p1/catkin/build/gtest/cmake_install.cmake")
-  INCLUDE("/home/luc/ros_workspace/alg_robo_p1/catkin/build/filters/cmake_install.cmake")
   INCLUDE("/home/luc/ros_workspace/alg_robo_p1/catkin/build/motion/cmake_install.cmake")
   INCLUDE("/home/luc/ros_workspace/alg_robo_p1/catkin/build/noisey/cmake_install.cmake")
   INCLUDE("/home/luc/ros_workspace/alg_robo_p1/catkin/build/stdr_world/cmake_install.cmake")
   INCLUDE("/home/luc/ros_workspace/alg_robo_p1/catkin/build/algp1_msgs/cmake_install.cmake")
+  INCLUDE("/home/luc/ros_workspace/alg_robo_p1/catkin/build/filters/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 

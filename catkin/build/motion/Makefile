@@ -147,6 +147,216 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+motion/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+.PHONY : motion/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+actionlib_msgs_generate_messages_cpp: motion/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+.PHONY : actionlib_msgs_generate_messages_cpp
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_cpp/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make motion/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
+.PHONY : actionlib_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+motion/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
+.PHONY : motion/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+actionlib_msgs_generate_messages_lisp: motion/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
+.PHONY : actionlib_msgs_generate_messages_lisp
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_lisp/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make motion/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
+.PHONY : actionlib_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+motion/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
+.PHONY : motion/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+actionlib_msgs_generate_messages_py: motion/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
+.PHONY : actionlib_msgs_generate_messages_py
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_py/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make motion/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
+.PHONY : actionlib_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+motion/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+.PHONY : motion/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_cpp: motion/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+.PHONY : geometry_msgs_generate_messages_cpp
+
+# fast build rule for target.
+geometry_msgs_generate_messages_cpp/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make motion/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+.PHONY : geometry_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+motion/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+.PHONY : motion/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_lisp: motion/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+.PHONY : geometry_msgs_generate_messages_lisp
+
+# fast build rule for target.
+geometry_msgs_generate_messages_lisp/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make motion/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
+.PHONY : geometry_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+motion/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+.PHONY : motion/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_py: motion/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+.PHONY : geometry_msgs_generate_messages_py
+
+# fast build rule for target.
+geometry_msgs_generate_messages_py/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make motion/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
+.PHONY : geometry_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+motion/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule
+.PHONY : motion/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+nav_msgs_generate_messages_cpp: motion/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule
+.PHONY : nav_msgs_generate_messages_cpp
+
+# fast build rule for target.
+nav_msgs_generate_messages_cpp/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build.make motion/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build
+.PHONY : nav_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+motion/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule
+.PHONY : motion/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+nav_msgs_generate_messages_lisp: motion/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule
+.PHONY : nav_msgs_generate_messages_lisp
+
+# fast build rule for target.
+nav_msgs_generate_messages_lisp/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build.make motion/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build
+.PHONY : nav_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+motion/CMakeFiles/nav_msgs_generate_messages_py.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
+.PHONY : motion/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+nav_msgs_generate_messages_py: motion/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
+.PHONY : nav_msgs_generate_messages_py
+
+# fast build rule for target.
+nav_msgs_generate_messages_py/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/nav_msgs_generate_messages_py.dir/build.make motion/CMakeFiles/nav_msgs_generate_messages_py.dir/build
+.PHONY : nav_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+motion/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+.PHONY : motion/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_cpp: motion/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+.PHONY : roscpp_generate_messages_cpp
+
+# fast build rule for target.
+roscpp_generate_messages_cpp/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make motion/CMakeFiles/roscpp_generate_messages_cpp.dir/build
+.PHONY : roscpp_generate_messages_cpp/fast
+
+# Convenience name for target.
+motion/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+.PHONY : motion/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_lisp: motion/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+.PHONY : roscpp_generate_messages_lisp
+
+# fast build rule for target.
+roscpp_generate_messages_lisp/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make motion/CMakeFiles/roscpp_generate_messages_lisp.dir/build
+.PHONY : roscpp_generate_messages_lisp/fast
+
+# Convenience name for target.
+motion/CMakeFiles/roscpp_generate_messages_py.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/roscpp_generate_messages_py.dir/rule
+.PHONY : motion/CMakeFiles/roscpp_generate_messages_py.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_py: motion/CMakeFiles/roscpp_generate_messages_py.dir/rule
+.PHONY : roscpp_generate_messages_py
+
+# fast build rule for target.
+roscpp_generate_messages_py/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/roscpp_generate_messages_py.dir/build.make motion/CMakeFiles/roscpp_generate_messages_py.dir/build
+.PHONY : roscpp_generate_messages_py/fast
+
+# Convenience name for target.
+motion/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+.PHONY : motion/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_cpp: motion/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+.PHONY : rosgraph_msgs_generate_messages_cpp
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_cpp/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make motion/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+motion/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+.PHONY : motion/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_lisp: motion/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+.PHONY : rosgraph_msgs_generate_messages_lisp
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_lisp/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make motion/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+motion/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
+.PHONY : motion/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_py: motion/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
+.PHONY : rosgraph_msgs_generate_messages_py
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_py/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make motion/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
+.PHONY : rosgraph_msgs_generate_messages_py/fast
+
+# Convenience name for target.
 motion/CMakeFiles/simple_movement.dir/rule:
 	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/simple_movement.dir/rule
 .PHONY : motion/CMakeFiles/simple_movement.dir/rule
@@ -159,6 +369,48 @@ simple_movement: motion/CMakeFiles/simple_movement.dir/rule
 simple_movement/fast:
 	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/simple_movement.dir/build.make motion/CMakeFiles/simple_movement.dir/build
 .PHONY : simple_movement/fast
+
+# Convenience name for target.
+motion/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+.PHONY : motion/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_cpp: motion/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+.PHONY : std_msgs_generate_messages_cpp
+
+# fast build rule for target.
+std_msgs_generate_messages_cpp/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make motion/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+.PHONY : std_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+motion/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+.PHONY : motion/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_lisp: motion/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+.PHONY : std_msgs_generate_messages_lisp
+
+# fast build rule for target.
+std_msgs_generate_messages_lisp/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make motion/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+.PHONY : std_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+motion/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+.PHONY : motion/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_py: motion/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+.PHONY : std_msgs_generate_messages_py
+
+# fast build rule for target.
+std_msgs_generate_messages_py/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/std_msgs_generate_messages_py.dir/build.make motion/CMakeFiles/std_msgs_generate_messages_py.dir/build
+.PHONY : std_msgs_generate_messages_py/fast
 
 src/simple_movement.o: src/simple_movement.cpp.o
 .PHONY : src/simple_movement.o
@@ -190,13 +442,31 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... actionlib_msgs_generate_messages_cpp"
+	@echo "... actionlib_msgs_generate_messages_lisp"
+	@echo "... actionlib_msgs_generate_messages_py"
 	@echo "... edit_cache"
+	@echo "... geometry_msgs_generate_messages_cpp"
+	@echo "... geometry_msgs_generate_messages_lisp"
+	@echo "... geometry_msgs_generate_messages_py"
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
 	@echo "... list_install_components"
+	@echo "... nav_msgs_generate_messages_cpp"
+	@echo "... nav_msgs_generate_messages_lisp"
+	@echo "... nav_msgs_generate_messages_py"
 	@echo "... rebuild_cache"
+	@echo "... roscpp_generate_messages_cpp"
+	@echo "... roscpp_generate_messages_lisp"
+	@echo "... roscpp_generate_messages_py"
+	@echo "... rosgraph_msgs_generate_messages_cpp"
+	@echo "... rosgraph_msgs_generate_messages_lisp"
+	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... simple_movement"
+	@echo "... std_msgs_generate_messages_cpp"
+	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... std_msgs_generate_messages_py"
 	@echo "... test"
 	@echo "... src/simple_movement.o"
 	@echo "... src/simple_movement.i"

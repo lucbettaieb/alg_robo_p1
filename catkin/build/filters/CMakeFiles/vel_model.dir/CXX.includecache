@@ -17,6 +17,8 @@ math.h
 -
 stdio.h
 -
+algp1_msgs/Pose2DWithCovariance.h
+-
 
 /opt/ros/hydro/include/XmlRpcDecl.h
 ros/macros.h
