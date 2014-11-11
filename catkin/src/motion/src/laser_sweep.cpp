@@ -61,8 +61,8 @@ void performSweep(){
 	std::ofstream file;
 	file.open ("rangemap.txt");
 
-	for(int i = 0; i < 15; i++){ 		//For all of the grid ROWS
-		for(int j = 0; j < 15; j++){	//For all of the column CELLS in the ROW
+	for(int i = 0; i < 14; i++){ 		//For all of the grid ROWS
+		for(int j = 0; j < 14; j++){	//For all of the column CELLS in the ROW
 			std::cout << "Please move robot to: " << i << ", " << j << "." << std::endl;
 			std::cout << "Enter an int once robot is in position: ";
 			std::cin >> intCont;
@@ -72,28 +72,32 @@ void performSweep(){
 			file << "[" << i << "," << j << "] \n";
 			std::cout << "[" << i << "," << j << "] \n";
 			for(int a = 0; a < 8; a++){
+				ros::spinOnce(); //Spin to get data
+
+				file << "Angle: " << a+1 << "*pi/4" << "\n";
+				
+				for(int b = 0; b < scan_.ranges.size(); b++){
+					//Acquire range array and write the values to the file.
+					if(b == 0){ //first range
+						file << "Ranges: {" << scan_.ranges[b] <<",";
+					}
+					else if(b == scan_.ranges.size()-1) { //last range
+						file << scan_.ranges[b] << "}";
+					}
+					else {//in-betweeners
+						file << scan_.ranges[b] << ",";
+					}
+				}
+
 				sweep.angular.z = M_PI/4;	//Set an omega of pi/4 rads/s
 				pub_rot_.publish(sweep);	//Publish omega
 				ros::Duration(1).sleep();	//For one second
 				pub_rot_.publish(stop);		//Stop
 
-				ros::spinOnce();
+				
 
 				//WRITE the angle at which the robot is at.
-				file << "Angle: " << a+1 << "*pi/4" << "\n";
 				
-					for(int b = 0; b < scan_.ranges.size(); b++){
-						//Acquire range array and write the values to the file.
-						if(b == 0){ //first range
-							file << "Ranges: {" << scan_.ranges[b] <<",";
-						}
-						else if(b == scan_.ranges.size()-1) { //last range
-							file << scan_.ranges[b] << "}";
-						}
-						else {//in-betweeners
-							file << scan_.ranges[b] << ",";
-						}
-					}
 				file << "\n \n";
 				file.flush();
 		
