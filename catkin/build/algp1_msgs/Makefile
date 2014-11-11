@@ -147,62 +147,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-algp1_msgs/CMakeFiles/_catkin_empty_exported_target.dir/rule:
-	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 algp1_msgs/CMakeFiles/_catkin_empty_exported_target.dir/rule
-.PHONY : algp1_msgs/CMakeFiles/_catkin_empty_exported_target.dir/rule
-
-# Convenience name for target.
-_catkin_empty_exported_target: algp1_msgs/CMakeFiles/_catkin_empty_exported_target.dir/rule
-.PHONY : _catkin_empty_exported_target
-
-# fast build rule for target.
-_catkin_empty_exported_target/fast:
-	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f algp1_msgs/CMakeFiles/_catkin_empty_exported_target.dir/build.make algp1_msgs/CMakeFiles/_catkin_empty_exported_target.dir/build
-.PHONY : _catkin_empty_exported_target/fast
-
-# Convenience name for target.
-algp1_msgs/CMakeFiles/actionlib_generate_messages_cpp.dir/rule:
-	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 algp1_msgs/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
-.PHONY : algp1_msgs/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_cpp: algp1_msgs/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
-.PHONY : actionlib_generate_messages_cpp
-
-# fast build rule for target.
-actionlib_generate_messages_cpp/fast:
-	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f algp1_msgs/CMakeFiles/actionlib_generate_messages_cpp.dir/build.make algp1_msgs/CMakeFiles/actionlib_generate_messages_cpp.dir/build
-.PHONY : actionlib_generate_messages_cpp/fast
-
-# Convenience name for target.
-algp1_msgs/CMakeFiles/actionlib_generate_messages_lisp.dir/rule:
-	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 algp1_msgs/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
-.PHONY : algp1_msgs/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_lisp: algp1_msgs/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
-.PHONY : actionlib_generate_messages_lisp
-
-# fast build rule for target.
-actionlib_generate_messages_lisp/fast:
-	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f algp1_msgs/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make algp1_msgs/CMakeFiles/actionlib_generate_messages_lisp.dir/build
-.PHONY : actionlib_generate_messages_lisp/fast
-
-# Convenience name for target.
-algp1_msgs/CMakeFiles/actionlib_generate_messages_py.dir/rule:
-	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 algp1_msgs/CMakeFiles/actionlib_generate_messages_py.dir/rule
-.PHONY : algp1_msgs/CMakeFiles/actionlib_generate_messages_py.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_py: algp1_msgs/CMakeFiles/actionlib_generate_messages_py.dir/rule
-.PHONY : actionlib_generate_messages_py
-
-# fast build rule for target.
-actionlib_generate_messages_py/fast:
-	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f algp1_msgs/CMakeFiles/actionlib_generate_messages_py.dir/build.make algp1_msgs/CMakeFiles/actionlib_generate_messages_py.dir/build
-.PHONY : actionlib_generate_messages_py/fast
-
-# Convenience name for target.
 algp1_msgs/CMakeFiles/algp1_msgs_gencpp.dir/rule:
 	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 algp1_msgs/CMakeFiles/algp1_msgs_gencpp.dir/rule
 .PHONY : algp1_msgs/CMakeFiles/algp1_msgs_gencpp.dir/rule
@@ -300,72 +244,12 @@ algp1_msgs_genpy/fast:
 	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f algp1_msgs/CMakeFiles/algp1_msgs_genpy.dir/build.make algp1_msgs/CMakeFiles/algp1_msgs_genpy.dir/build
 .PHONY : algp1_msgs_genpy/fast
 
-# Convenience name for target.
-algp1_msgs/CMakeFiles/algp1_msgs_package.dir/rule:
-	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 algp1_msgs/CMakeFiles/algp1_msgs_package.dir/rule
-.PHONY : algp1_msgs/CMakeFiles/algp1_msgs_package.dir/rule
-
-# Convenience name for target.
-algp1_msgs_package: algp1_msgs/CMakeFiles/algp1_msgs_package.dir/rule
-.PHONY : algp1_msgs_package
-
-# fast build rule for target.
-algp1_msgs_package/fast:
-	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f algp1_msgs/CMakeFiles/algp1_msgs_package.dir/build.make algp1_msgs/CMakeFiles/algp1_msgs_package.dir/build
-.PHONY : algp1_msgs_package/fast
-
-# Convenience name for target.
-algp1_msgs/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule:
-	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 algp1_msgs/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
-.PHONY : algp1_msgs/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-trajectory_msgs_generate_messages_cpp: algp1_msgs/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
-.PHONY : trajectory_msgs_generate_messages_cpp
-
-# fast build rule for target.
-trajectory_msgs_generate_messages_cpp/fast:
-	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f algp1_msgs/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build.make algp1_msgs/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build
-.PHONY : trajectory_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-algp1_msgs/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule:
-	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 algp1_msgs/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
-.PHONY : algp1_msgs/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-trajectory_msgs_generate_messages_lisp: algp1_msgs/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
-.PHONY : trajectory_msgs_generate_messages_lisp
-
-# fast build rule for target.
-trajectory_msgs_generate_messages_lisp/fast:
-	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f algp1_msgs/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build.make algp1_msgs/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build
-.PHONY : trajectory_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-algp1_msgs/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule:
-	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 algp1_msgs/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
-.PHONY : algp1_msgs/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-trajectory_msgs_generate_messages_py: algp1_msgs/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
-.PHONY : trajectory_msgs_generate_messages_py
-
-# fast build rule for target.
-trajectory_msgs_generate_messages_py/fast:
-	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f algp1_msgs/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build.make algp1_msgs/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build
-.PHONY : trajectory_msgs_generate_messages_py/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... _catkin_empty_exported_target"
-	@echo "... actionlib_generate_messages_cpp"
-	@echo "... actionlib_generate_messages_lisp"
-	@echo "... actionlib_generate_messages_py"
 	@echo "... algp1_msgs_gencpp"
 	@echo "... algp1_msgs_generate_messages"
 	@echo "... algp1_msgs_generate_messages_cpp"
@@ -373,7 +257,6 @@ help:
 	@echo "... algp1_msgs_generate_messages_py"
 	@echo "... algp1_msgs_genlisp"
 	@echo "... algp1_msgs_genpy"
-	@echo "... algp1_msgs_package"
 	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... install/local"
@@ -381,9 +264,6 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... trajectory_msgs_generate_messages_cpp"
-	@echo "... trajectory_msgs_generate_messages_lisp"
-	@echo "... trajectory_msgs_generate_messages_py"
 .PHONY : help
 
 

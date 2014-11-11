@@ -5,4 +5,4 @@ Description: Description of algp1_msgs
 Version: 0.0.0
 Cflags: -I/home/luc/ros_workspace/alg_robo_p1/catkin/install/include
 Libs: -L/home/luc/ros_workspace/alg_robo_p1/catkin/install/lib 
-Requires: std_msgs geometry_msgs message_runtime actionlib actionlib_msgs trajectory_msgs
+Requires: message_runtime

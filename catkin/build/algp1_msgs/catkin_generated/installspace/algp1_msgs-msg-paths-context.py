@@ -5,4 +5,4 @@ INSTALLSPACE = 'TRUE' == 'TRUE'
 
 PROJECT_NAME = 'algp1_msgs'
 PKG_MSG_INCLUDE_DIRS = 'msg'
-ARG_DEPENDENCIES = 'std_msgs;geometry_msgs;actionlib;actionlib_msgs;trajectory_msgs'
+ARG_DEPENDENCIES = 'std_msgs;geometry_msgs;nav_msgs'

@@ -2,7 +2,7 @@
 
 message(STATUS "algp1_msgs: 1 messages, 0 services")
 
-set(MSG_I_FLAGS "-Ialgp1_msgs:/home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg;-Istd_msgs:/opt/ros/hydro/share/std_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/hydro/share/geometry_msgs/cmake/../msg;-Iactionlib:/opt/ros/hydro/share/actionlib/cmake/../msg;-Iactionlib_msgs:/opt/ros/hydro/share/actionlib_msgs/cmake/../msg;-Itrajectory_msgs:/opt/ros/hydro/share/trajectory_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Ialgp1_msgs:/home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg;-Istd_msgs:/opt/ros/hydro/share/std_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/hydro/share/geometry_msgs/cmake/../msg;-Inav_msgs:/opt/ros/hydro/share/nav_msgs/cmake/../msg;-Iactionlib_msgs:/opt/ros/hydro/share/actionlib_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -113,9 +113,7 @@ if(gencpp_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/al
 endif()
 add_dependencies(algp1_msgs_generate_messages_cpp std_msgs_generate_messages_cpp)
 add_dependencies(algp1_msgs_generate_messages_cpp geometry_msgs_generate_messages_cpp)
-add_dependencies(algp1_msgs_generate_messages_cpp actionlib_generate_messages_cpp)
-add_dependencies(algp1_msgs_generate_messages_cpp actionlib_msgs_generate_messages_cpp)
-add_dependencies(algp1_msgs_generate_messages_cpp trajectory_msgs_generate_messages_cpp)
+add_dependencies(algp1_msgs_generate_messages_cpp nav_msgs_generate_messages_cpp)
 
 if(genlisp_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/algp1_msgs)
   # install generated code
@@ -126,9 +124,7 @@ if(genlisp_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/
 endif()
 add_dependencies(algp1_msgs_generate_messages_lisp std_msgs_generate_messages_lisp)
 add_dependencies(algp1_msgs_generate_messages_lisp geometry_msgs_generate_messages_lisp)
-add_dependencies(algp1_msgs_generate_messages_lisp actionlib_generate_messages_lisp)
-add_dependencies(algp1_msgs_generate_messages_lisp actionlib_msgs_generate_messages_lisp)
-add_dependencies(algp1_msgs_generate_messages_lisp trajectory_msgs_generate_messages_lisp)
+add_dependencies(algp1_msgs_generate_messages_lisp nav_msgs_generate_messages_lisp)
 
 if(genpy_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/algp1_msgs)
   install(CODE "execute_process(COMMAND \"/usr/bin/python\" -m compileall \"${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/algp1_msgs\")")
@@ -140,6 +136,4 @@ if(genpy_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/algp
 endif()
 add_dependencies(algp1_msgs_generate_messages_py std_msgs_generate_messages_py)
 add_dependencies(algp1_msgs_generate_messages_py geometry_msgs_generate_messages_py)
-add_dependencies(algp1_msgs_generate_messages_py actionlib_generate_messages_py)
-add_dependencies(algp1_msgs_generate_messages_py actionlib_msgs_generate_messages_py)
-add_dependencies(algp1_msgs_generate_messages_py trajectory_msgs_generate_messages_py)
+add_dependencies(algp1_msgs_generate_messages_py nav_msgs_generate_messages_py)
