@@ -231,6 +231,20 @@ geometry_msgs_generate_messages_py/fast:
 .PHONY : geometry_msgs_generate_messages_py/fast
 
 # Convenience name for target.
+motion/CMakeFiles/laser_sweep.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/laser_sweep.dir/rule
+.PHONY : motion/CMakeFiles/laser_sweep.dir/rule
+
+# Convenience name for target.
+laser_sweep: motion/CMakeFiles/laser_sweep.dir/rule
+.PHONY : laser_sweep
+
+# fast build rule for target.
+laser_sweep/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/laser_sweep.dir/build.make motion/CMakeFiles/laser_sweep.dir/build
+.PHONY : laser_sweep/fast
+
+# Convenience name for target.
 motion/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule:
 	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 motion/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule
 .PHONY : motion/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule
@@ -412,6 +426,30 @@ std_msgs_generate_messages_py/fast:
 	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/std_msgs_generate_messages_py.dir/build.make motion/CMakeFiles/std_msgs_generate_messages_py.dir/build
 .PHONY : std_msgs_generate_messages_py/fast
 
+src/laser_sweep.o: src/laser_sweep.cpp.o
+.PHONY : src/laser_sweep.o
+
+# target to build an object file
+src/laser_sweep.cpp.o:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/laser_sweep.dir/build.make motion/CMakeFiles/laser_sweep.dir/src/laser_sweep.cpp.o
+.PHONY : src/laser_sweep.cpp.o
+
+src/laser_sweep.i: src/laser_sweep.cpp.i
+.PHONY : src/laser_sweep.i
+
+# target to preprocess a source file
+src/laser_sweep.cpp.i:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/laser_sweep.dir/build.make motion/CMakeFiles/laser_sweep.dir/src/laser_sweep.cpp.i
+.PHONY : src/laser_sweep.cpp.i
+
+src/laser_sweep.s: src/laser_sweep.cpp.s
+.PHONY : src/laser_sweep.s
+
+# target to generate assembly for a file
+src/laser_sweep.cpp.s:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f motion/CMakeFiles/laser_sweep.dir/build.make motion/CMakeFiles/laser_sweep.dir/src/laser_sweep.cpp.s
+.PHONY : src/laser_sweep.cpp.s
+
 src/simple_movement.o: src/simple_movement.cpp.o
 .PHONY : src/simple_movement.o
 
@@ -452,6 +490,7 @@ help:
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
+	@echo "... laser_sweep"
 	@echo "... list_install_components"
 	@echo "... nav_msgs_generate_messages_cpp"
 	@echo "... nav_msgs_generate_messages_lisp"
@@ -468,6 +507,9 @@ help:
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... test"
+	@echo "... src/laser_sweep.o"
+	@echo "... src/laser_sweep.i"
+	@echo "... src/laser_sweep.s"
 	@echo "... src/simple_movement.o"
 	@echo "... src/simple_movement.i"
 	@echo "... src/simple_movement.s"

@@ -303,6 +303,19 @@ geometry_msgs_generate_messages_py/fast:
 .PHONY : geometry_msgs_generate_messages_py/fast
 
 #=============================================================================
+# Target rules for targets named laser_sweep
+
+# Build rule for target.
+laser_sweep: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 laser_sweep
+.PHONY : laser_sweep
+
+# fast build rule for target.
+laser_sweep/fast:
+	$(MAKE) -f motion/CMakeFiles/laser_sweep.dir/build.make motion/CMakeFiles/laser_sweep.dir/build
+.PHONY : laser_sweep/fast
+
+#=============================================================================
 # Target rules for targets named nav_msgs_generate_messages_cpp
 
 # Build rule for target.
@@ -886,6 +899,7 @@ help:
 	@echo "... geometry_msgs_generate_messages_cpp"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_py"
+	@echo "... laser_sweep"
 	@echo "... nav_msgs_generate_messages_cpp"
 	@echo "... nav_msgs_generate_messages_lisp"
 	@echo "... nav_msgs_generate_messages_py"

@@ -48,21 +48,36 @@ void performSweep(){
 
 	int intCont = 0;
 
-	ofstream file;
+	std::ofstream file;
 	file.open ("rangemap.txt");
 
 	for(int i = 0; i < 15; i++){ 		//For all of the grid ROWS
 		for(int j = 0; j < 15; j++){	//For all of the column CELLS in the ROW
-			std::cout << "Please move robot to: " i << ", " << j "." << std::endl;
-			std::cout << "Enter an int once robot is in position.";
+			std::cout << "Please move robot to: " << i << ", " << j << "." << std::endl;
+			std::cout << "Enter an int once robot is in position: ";
 			std::cin >> intCont;
 
-			for(float i = 0; i <= 2*M_PI; i += (2*M_PI / 8)){
-				sweep.angular.z = i;	//Get new rotation angle
+			//WRITE which cell this is going to be for in the file.
+
+			file << "[" << i << "," << j << "] \n";
+			for(float a = 0; a <= 2*M_PI; a += (2*M_PI / 8)){
+				sweep.angular.z = a;	//Get new rotation angle
 				pub_rot_.publish(sweep);//Publish new rotation angle
-					
-					for(int i = 0; i < scan_.ranges.size(); i++){
-						//Acquire ranges and save them to the file.
+
+				//WRITE the angle at which the robot is at.
+				file << "Angle: " << a << "\n";
+				file << "Ranges: " << "\n";
+					for(int b = 0; b < scan_.ranges.size(); b++){
+						//Acquire range array and write the values to the file.
+						if(b == 0){ //first range
+							file << "{" << scan_.ranges[b];
+						}
+						else if(b == scan_.ranges.size()) { //last range
+							file << scan_.ranges[b] << "}";
+						}
+						else {//in-betweeners
+							file << "," << scan_.ranges[b] << ",";
+						}
 					}
 		
 			}
@@ -74,12 +89,12 @@ void performSweep(){
 }
 
 int main(int argc, char** argv){
-	ros::init(argc, argv, laser_sweep);
+	ros::init(argc, argv, "laser_sweep");
 	ros::NodeHandle nh;
 
 	pub_rot_ = nh.advertise<geometry_msgs::Twist>("/robot0/cmd_vel", 1);
 	sub_laser_ = nh.subscribe("/noiseyScan", 10, updateLaser);
-	sub_odom_ = nh.subscribe("/robot0/odom", 10, updateOdom);
+	//sub_odom_ = nh.subscribe("/robot0/odom", 10, updateOdom);
 	ros::spin();
 	return 0;
 }

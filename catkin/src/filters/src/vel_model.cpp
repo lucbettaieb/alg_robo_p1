@@ -62,17 +62,17 @@ void updateRealOdom(const nav_msgs::Odometry &odom){
 }
 
 float motion_model_velocity(algp1_msgs::Pose2DWithCovariance x_now, geometry_msgs::Twist u, algp1_msgs::Pose2DWithCovariance x_prev){
-	float mu = (0.5) * ((x_prev.x - x_now.x)*cos(x_prev.theta) + (x_prev.y - x_now.y)*sin(x_prev.theta)) / ((x_prev.y - x_now.y)*cos(x_prev.theta) - (x_prev.x - x_now.x)*sin(x_prev.theta))
+	float mu = (0.5) * ((x_prev.pose2d.x - x_now.pose2d.x)*cos(x_prev.pose2d.theta) + (x_prev.pose2d.y - x_now.pose2d.y)*sin(x_prev.pose2d.theta)) / ((x_prev.pose2d.y - x_now.pose2d.y)*cos(x_prev.pose2d.theta) - (x_prev.pose2d.x - x_now.pose2d.x)*sin(x_prev.pose2d.theta));
 	
-	float x_star = ((x_prev.x + x_now.x)/2) + mu*(x_prev.y - x_now.y);
-	float y_star = ((x_prev.x + x_now.x)/2) + mu*(x_prev.x - x_now.x);
-	float r_star = sqrt((x_prev.x - x_star)*(x_prev.x - x_star) + (x_prev.y - y_star)*(x_prev.y - y_star));
+	float x_star = ((x_prev.pose2d.x + x_now.pose2d.x)/2) + mu*(x_prev.pose2d.y - x_now.pose2d.y);
+	float y_star = ((x_prev.pose2d.x + x_now.pose2d.x)/2) + mu*(x_prev.pose2d.x - x_now.pose2d.x);
+	float r_star = sqrt((x_prev.pose2d.x - x_star)*(x_prev.pose2d.x - x_star) + (x_prev.pose2d.y - y_star)*(x_prev.pose2d.y - y_star));
 	
-	float d_theta = atan2(x_now.y - y_star, x_now.x - x_star) - atan2(x_prev.y - y_star, x_prev.x - x_star);
+	float d_theta = atan2(x_now.pose2d.y - y_star, x_now.pose2d.x - x_star) - atan2(x_prev.pose2d.y - y_star, x_prev.pose2d.x - x_star);
 
 	float v_hat = (d_theta / moveTime) * r_star;
 	float omega_hat = (d_theta / moveTime);
-	float gamma_hat = ((x_now.theta - x_prev.theta)/moveTime) - omega_hat;
+	float gamma_hat = ((x_now.pose2d.theta - x_prev.pose2d.theta)/moveTime) - omega_hat;
 
 	
 
