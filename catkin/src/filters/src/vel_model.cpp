@@ -27,6 +27,8 @@ nav_msgs::Odometry realOdom_;
 nav_msgs::Odometry velocity_model_;
 algp1_msgs::Pose2DWithCovariance velocity_model_pose_;
 
+
+
 const float moveTime = 1; //Derived from motion classes.  Needs to be changed if changed elsewhere.
 
 bool timeToUpdateOdom = true;
@@ -35,30 +37,14 @@ void updateVel_model(const geometry_msgs::Twist &cmdvel){
 	ROS_INFO("Got new cmd_vel, updating vel_model.");
 	timeToUpdateOdom = true; //Allow for a new true odom measurement to be gathered
 
-	//if(!(cmdvel.linear.x == 0 && cmdvel.angular.z == 0)){
-
 		//This is a bit hacky considering the fact that realOdom shouldn't technically be real...  I guess it will just be perfect.
 
-		//Updating model's X with previous
+		//Updating model's state X with previous
 		velocity_model_.pose.pose.position.x = realOdom_.pose.pose.position.x + cos(cmdvel.angular.z) * moveTime * cmdvel.linear.x;
 		velocity_model_.pose.pose.position.y = realOdom_.pose.pose.position.y + sin(cmdvel.angular.z) * moveTime * cmdvel.linear.y;
 
-		//Something is wrong with this line of code.
-		//I need to update the quaternion correctly and I have no idea.
-		
-		//velocity_model_.pose.pose.orientation.w = (1/3.14159)*atan(abs(realOdom_.pose.pose.orientation.z/realOdom_.pose.pose.orientation.w)) + (moveTime * cmdvel.angular.z)/3.14159;
-
-		//std::cout << realOdom_.pose.pose.orientation.z << "prevZ" << std::endl;
-		//std::cout << realOdom_.pose.pose.orientation.w << "prevW" << std::endl;
-		//std::cout << cmdvel.angular.z << "cmdVel z" << std::endl;
-		//velocity_model_.pose.pose.orientation.w = (1/3.14159)*atan2(realOdom_.pose.pose.orientation.z,realOdom_.pose.pose.orientation.w) + (moveTime * cmdvel.angular.z)/3.14159;
-		
 		velocity_model_.pose.pose.orientation.w = (1/M_PI)*(2*acos(realOdom_.pose.pose.orientation.w) + (moveTime * cmdvel.angular.z));
 		
-		//if(velocity_model_.pose.pose.orientation.)
-		// if(velocity_model_.pose.pose.orientation.w > 1.99){ //If at 2pi, go back to 0 (full rotation)  (kind of hacky because of the 1.99)
-		// 	velocity_model_.pose.pose.orientation.w = 0;
-		// }
 
 		velocity_model_pose_.pose2d.x = velocity_model_.pose.pose.position.x;
 		velocity_model_pose_.pose2d.y = velocity_model_.pose.pose.position.y;
@@ -68,15 +54,28 @@ void updateVel_model(const geometry_msgs::Twist &cmdvel){
 		//(!!!) TODO: Add in Algorithmic_model_velocity
 		pub_vel_model_odom_.publish(velocity_model_);
 		pub_vel_model_pose_.publish(velocity_model_pose_);
-
-	//}
 }
 
 void updateRealOdom(const nav_msgs::Odometry &odom){
-	//if(timeToUpdateOdom){
 		realOdom_ = odom;  //make this update only after the velocity_model_ has been updated so it can keep track of the odom before a perturbation has been applied
 		timeToUpdateOdom = false;
-	//}
+}
+
+float motion_model_velocity(algp1_msgs::Pose2DWithCovariance x_now, geometry_msgs::Twist u, algp1_msgs::Pose2DWithCovariance x_prev){
+	float mu = (0.5) * ((x_prev.x - x_now.x)*cos(x_prev.theta) + (x_prev.y - x_now.y)*sin(x_prev.theta)) / ((x_prev.y - x_now.y)*cos(x_prev.theta) - (x_prev.x - x_now.x)*sin(x_prev.theta))
+	
+	float x_star = ((x_prev.x + x_now.x)/2) + mu*(x_prev.y - x_now.y);
+	float y_star = ((x_prev.x + x_now.x)/2) + mu*(x_prev.x - x_now.x);
+	float r_star = sqrt((x_prev.x - x_star)*(x_prev.x - x_star) + (x_prev.y - y_star)*(x_prev.y - y_star));
+	
+	float d_theta = atan2(x_now.y - y_star, x_now.x - x_star) - atan2(x_prev.y - y_star, x_prev.x - x_star);
+
+	float v_hat = (d_theta / moveTime) * r_star;
+	float omega_hat = (d_theta / moveTime);
+	float gamma_hat = ((x_now.theta - x_prev.theta)/moveTime) - omega_hat;
+
+	
+
 }
 
 int main(int argc, char** argv){

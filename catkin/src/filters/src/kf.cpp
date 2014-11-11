@@ -28,6 +28,7 @@ int main(int argc, char** argv){
 	sub_sense_model_ = nh.subscribe("/sense_model",10,updateSensorModel);
 
 	//then publish a P(x| the fusion of the two n stuff)
+	pub_state_ - nh.advertise<
 
 	ros::spin();
 	return 0;
