@@ -59,7 +59,7 @@ void performSweep(){
 	int intCont = 0;
 
 	std::ofstream file;
-	file.open ("rangemap.txt");
+	file.open ("fiveseven.txt");
 
 	for(int i = 0; i < 14; i++){ 		//For all of the grid ROWS
 		for(int j = 0; j < 14; j++){	//For all of the column CELLS in the ROW
