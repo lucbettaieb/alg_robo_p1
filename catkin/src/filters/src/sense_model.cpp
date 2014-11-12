@@ -11,12 +11,17 @@
 */
 
 #include <ros/ros.h>
-#include <Eigen/Eigen>
+
 #include <nav_msgs/Odometry.h>
 #include <sensor_msgs/LaserScan.h>
+#include <std_msgs/Bool.h>
 
 ros::Publisher pub_;	//To publish the odom with variance derived from vel
+ros::Publisher pub_newDataBool_;
+
 ros::Subscriber sub_;	//To subscribe to cmd_vel
+
+const float tolerance_ = 1;
 
 void updateOdom(const sensor_msgs::LaserScan &laser){
 	ROS_INFO("Got new scan data, updating sense_model.");
@@ -25,7 +30,6 @@ void updateOdom(const sensor_msgs::LaserScan &laser){
 	//Do dat stuff and update the sense_model
 
 
-	return sensor_model;
 }
 
 int main(int argc, char** argv){
@@ -33,6 +37,8 @@ int main(int argc, char** argv){
 	ros::NodeHandle nh;
 
 	pub_ = nh.advertise<nav_msgs::Odometry>("sense_model", 1);
+	pub_newDataBool_ = nh.advertise<std_msgs::Bool>("newData", 1);  //publish a TRUE to get new data.  Upon recieving new data, publish FALSE
+
 	sub_ = nh.subscribe("/noiseyScan", 10, updateOdom);
 
 	ros::spin();

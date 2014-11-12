@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "algp1_msgs: 1 messages, 0 services")
+message(STATUS "algp1_msgs: 2 messages, 0 services")
 
 set(MSG_I_FLAGS "-Ialgp1_msgs:/home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg;-Istd_msgs:/opt/ros/hydro/share/std_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/hydro/share/geometry_msgs/cmake/../msg;-Inav_msgs:/opt/ros/hydro/share/nav_msgs/cmake/../msg;-Iactionlib_msgs:/opt/ros/hydro/share/actionlib_msgs/cmake/../msg")
 
@@ -17,6 +17,12 @@ add_custom_target(algp1_msgs_generate_messages ALL)
 
 ### Section generating for lang: gencpp
 ### Generating Messages
+_generate_msg_cpp(algp1_msgs
+  "/home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/PoseScan.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/hydro/share/geometry_msgs/cmake/../msg/Pose2D.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/algp1_msgs
+)
 _generate_msg_cpp(algp1_msgs
   "/home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/Pose2DWithCovariance.msg"
   "${MSG_I_FLAGS}"
@@ -47,6 +53,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS algp1_msgs_generate_messages_cpp)
 ### Section generating for lang: genlisp
 ### Generating Messages
 _generate_msg_lisp(algp1_msgs
+  "/home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/PoseScan.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/hydro/share/geometry_msgs/cmake/../msg/Pose2D.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/algp1_msgs
+)
+_generate_msg_lisp(algp1_msgs
   "/home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/Pose2DWithCovariance.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/hydro/share/geometry_msgs/cmake/../msg/Pose2D.msg"
@@ -75,6 +87,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS algp1_msgs_generate_messages_lisp)
 
 ### Section generating for lang: genpy
 ### Generating Messages
+_generate_msg_py(algp1_msgs
+  "/home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/PoseScan.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/hydro/share/geometry_msgs/cmake/../msg/Pose2D.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/algp1_msgs
+)
 _generate_msg_py(algp1_msgs
   "/home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/Pose2DWithCovariance.msg"
   "${MSG_I_FLAGS}"

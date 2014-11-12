@@ -758,6 +758,32 @@ algp1_msgs_genpy/fast:
 .PHONY : algp1_msgs_genpy/fast
 
 #=============================================================================
+# Target rules for targets named scan_queue
+
+# Build rule for target.
+scan_queue: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 scan_queue
+.PHONY : scan_queue
+
+# fast build rule for target.
+scan_queue/fast:
+	$(MAKE) -f filters/CMakeFiles/scan_queue.dir/build.make filters/CMakeFiles/scan_queue.dir/build
+.PHONY : scan_queue/fast
+
+#=============================================================================
+# Target rules for targets named sense_model
+
+# Build rule for target.
+sense_model: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sense_model
+.PHONY : sense_model
+
+# fast build rule for target.
+sense_model/fast:
+	$(MAKE) -f filters/CMakeFiles/sense_model.dir/build.make filters/CMakeFiles/sense_model.dir/build
+.PHONY : sense_model/fast
+
+#=============================================================================
 # Target rules for targets named vel_model
 
 # Build rule for target.
@@ -830,6 +856,8 @@ help:
 	@echo "... algp1_msgs_generate_messages_py"
 	@echo "... algp1_msgs_genlisp"
 	@echo "... algp1_msgs_genpy"
+	@echo "... scan_queue"
+	@echo "... sense_model"
 	@echo "... vel_model"
 .PHONY : help
 

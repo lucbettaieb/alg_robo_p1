@@ -147,6 +147,34 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+filters/CMakeFiles/scan_queue.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 filters/CMakeFiles/scan_queue.dir/rule
+.PHONY : filters/CMakeFiles/scan_queue.dir/rule
+
+# Convenience name for target.
+scan_queue: filters/CMakeFiles/scan_queue.dir/rule
+.PHONY : scan_queue
+
+# fast build rule for target.
+scan_queue/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f filters/CMakeFiles/scan_queue.dir/build.make filters/CMakeFiles/scan_queue.dir/build
+.PHONY : scan_queue/fast
+
+# Convenience name for target.
+filters/CMakeFiles/sense_model.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 filters/CMakeFiles/sense_model.dir/rule
+.PHONY : filters/CMakeFiles/sense_model.dir/rule
+
+# Convenience name for target.
+sense_model: filters/CMakeFiles/sense_model.dir/rule
+.PHONY : sense_model
+
+# fast build rule for target.
+sense_model/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f filters/CMakeFiles/sense_model.dir/build.make filters/CMakeFiles/sense_model.dir/build
+.PHONY : sense_model/fast
+
+# Convenience name for target.
 filters/CMakeFiles/vel_model.dir/rule:
 	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 filters/CMakeFiles/vel_model.dir/rule
 .PHONY : filters/CMakeFiles/vel_model.dir/rule
@@ -159,6 +187,54 @@ vel_model: filters/CMakeFiles/vel_model.dir/rule
 vel_model/fast:
 	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f filters/CMakeFiles/vel_model.dir/build.make filters/CMakeFiles/vel_model.dir/build
 .PHONY : vel_model/fast
+
+src/scan_queue.o: src/scan_queue.cpp.o
+.PHONY : src/scan_queue.o
+
+# target to build an object file
+src/scan_queue.cpp.o:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f filters/CMakeFiles/scan_queue.dir/build.make filters/CMakeFiles/scan_queue.dir/src/scan_queue.cpp.o
+.PHONY : src/scan_queue.cpp.o
+
+src/scan_queue.i: src/scan_queue.cpp.i
+.PHONY : src/scan_queue.i
+
+# target to preprocess a source file
+src/scan_queue.cpp.i:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f filters/CMakeFiles/scan_queue.dir/build.make filters/CMakeFiles/scan_queue.dir/src/scan_queue.cpp.i
+.PHONY : src/scan_queue.cpp.i
+
+src/scan_queue.s: src/scan_queue.cpp.s
+.PHONY : src/scan_queue.s
+
+# target to generate assembly for a file
+src/scan_queue.cpp.s:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f filters/CMakeFiles/scan_queue.dir/build.make filters/CMakeFiles/scan_queue.dir/src/scan_queue.cpp.s
+.PHONY : src/scan_queue.cpp.s
+
+src/sense_model.o: src/sense_model.cpp.o
+.PHONY : src/sense_model.o
+
+# target to build an object file
+src/sense_model.cpp.o:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f filters/CMakeFiles/sense_model.dir/build.make filters/CMakeFiles/sense_model.dir/src/sense_model.cpp.o
+.PHONY : src/sense_model.cpp.o
+
+src/sense_model.i: src/sense_model.cpp.i
+.PHONY : src/sense_model.i
+
+# target to preprocess a source file
+src/sense_model.cpp.i:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f filters/CMakeFiles/sense_model.dir/build.make filters/CMakeFiles/sense_model.dir/src/sense_model.cpp.i
+.PHONY : src/sense_model.cpp.i
+
+src/sense_model.s: src/sense_model.cpp.s
+.PHONY : src/sense_model.s
+
+# target to generate assembly for a file
+src/sense_model.cpp.s:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f filters/CMakeFiles/sense_model.dir/build.make filters/CMakeFiles/sense_model.dir/src/sense_model.cpp.s
+.PHONY : src/sense_model.cpp.s
 
 src/vel_model.o: src/vel_model.cpp.o
 .PHONY : src/vel_model.o
@@ -196,8 +272,16 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... scan_queue"
+	@echo "... sense_model"
 	@echo "... test"
 	@echo "... vel_model"
+	@echo "... src/scan_queue.o"
+	@echo "... src/scan_queue.i"
+	@echo "... src/scan_queue.s"
+	@echo "... src/sense_model.o"
+	@echo "... src/sense_model.i"
+	@echo "... src/sense_model.s"
 	@echo "... src/vel_model.o"
 	@echo "... src/vel_model.i"
 	@echo "... src/vel_model.s"

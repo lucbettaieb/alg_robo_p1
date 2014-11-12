@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/Pose2DWithCovariance.msg"
+messages_str = "/home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/Pose2DWithCovariance.msg;/home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/PoseScan.msg"
 services_str = ""
 pkg_name = "algp1_msgs"
 dependencies_str = "std_msgs;geometry_msgs;nav_msgs"

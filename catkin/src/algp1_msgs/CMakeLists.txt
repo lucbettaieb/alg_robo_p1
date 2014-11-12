@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
 	FILES
 	Pose2DWithCovariance.msg
+	PoseScan.msg
 )
 
 generate_messages(
