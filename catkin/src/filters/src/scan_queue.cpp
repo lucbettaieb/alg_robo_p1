@@ -23,6 +23,8 @@ ros::Subscriber sub_newBool_;	//Subscriber to check whether or not to get a new 
 bool newData_ = true;			//Global boolean to determine whether or not to get a new set of data from the rangemap.
 
 void parseFile(){
+	algp1_msgs::PoseScan poseScan;
+
 	std::ifstream fin;
 	fin.open("rangemap_simple.txt");
 	if(!fin.good()){
@@ -42,7 +44,27 @@ void parseFile(){
 	}
 	ROS_INFO("Done copying file to vector.");
 	for(int i = 0; i < 1960; i+= 10){
-		std::cout<< list.at(i) << std::endl;
+		int com = list.at(i).find(",");
+		
+		std::string ex = list.at(i).substr(1,com-1);
+		std::string ey = list.at(i).substr(com+1);
+		ey.resize(ey.size()-1);
+
+		float x = (float)std::atoi(ex.c_str());
+		float y = (float)std::atoi(ey.c_str());
+
+		poseScan.pose2d.x = x;
+		poseScan.pose2d.y = y;
+		//std::cout << x << " " << y <<std::endl;
+		for(int a = 0; a < 1960; a++){
+			if((a % 10)!= 0){
+				std::string ranges;
+				//ranges.resize(6000);
+				ranges = list.at(a);
+				
+				
+			}
+		}
 	}
 }
 
