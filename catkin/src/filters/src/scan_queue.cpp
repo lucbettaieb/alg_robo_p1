@@ -61,6 +61,18 @@ void parseFile(){
 				std::string ranges;
 				//ranges.resize(6000);
 				ranges = list.at(a);
+				//std::cout << ranges.size() << std::endl;
+
+				if(!(ranges.size() < 2)){
+					ROS_INFO("Hello");
+					ranges = list.at(a).substr(1);
+					ranges.resize(ranges.size()-1);
+					for(int b = 0; b < ranges.size(); b++){
+						//
+					}
+					std::cout << ranges<< std::endl;
+				}
+
 				
 				
 			}
