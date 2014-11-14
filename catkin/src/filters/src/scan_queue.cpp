@@ -49,7 +49,8 @@ void parseFile(){
 
 	for(int i = 0; i < 1960; i+= 10){ 	//For every 10th element ([x,y])
 		int com = list.at(i).find(",");	//Find the comma
-		
+		std::vector<std::string> rangeVector;	//DEFINE VECTOR TO HOLD RANGES that will be assigned to pose2d things
+
 		std::string ex = list.at(i).substr(1,com-1); 	//Create a string that will represent X
 		std::string ey = list.at(i).substr(com+1);	 	//Create a strong that will represent Y] (for some reason the bracket stays)
 		ey.resize(ey.size()-1);						 	//Remove the bracket
@@ -57,53 +58,51 @@ void parseFile(){
 		float x = (float)std::atoi(ex.c_str());	//Make a float from the string for X
 		float y = (float)std::atoi(ey.c_str());	//And Y
 
-		poseScan.pose2d.x = x;	//Assign X to X in pose2d
-		poseScan.pose2d.y = y;	//Assign Y to Y in pose2d
-
 		for(int a = 0; a < 1960; a++){ 	//Loop through the entire vector again
 			if((a % 10)!= 0){			//And if its not one of the lines where there is a []
-			
-				std::vector<std::string> rangeVector; //DEFINE VECTOR TO HOLD RANGES 
+
 
 				std::string ranges;
 				//ranges.resize(6000);
 				ranges = list.at(a);
 				//std::cout << ranges.size() << std::endl;
 
-					if(ranges.size() > 2){ //If the line is not blank
-					
-						ranges = list.at(a).substr(1);
-						ranges.resize(ranges.size()-1);
+				if(ranges.size() > 2){ //If the line is not blank
 				
-						std::string tmp = ranges.substr(0);					//copy over ranges
-						int delim = tmp.find(",");
-						
-						ranges = ranges.substr(delim+1); //ranges is now one element less
+					ranges = list.at(a).substr(1);
+					ranges.resize(ranges.size()-1);
+			
+					std::string tmp = ranges.substr(0);					//copy over ranges
+					int delim = tmp.find(",");
+							
+					ranges = ranges.substr(delim+1); //ranges is now one element less
 
-						if(delim > 1){
-							tmp.resize(delim);
+					if(delim > 1){
+						tmp.resize(delim);
+						rangeVector.push_back(tmp);
+						std::cout << a << " - "<< tmp << std::endl;
 
-							std::cout << a << " - "<< tmp << std::endl;
-						}
-				
-				
-
-
-					
-				//std::cout << ranges<< std::endl;
-			}				
+					}
+				}
+			}
 		}
+		poseScan.pose2d.x = x;	//Assign X to X in pose2d
+		poseScan.pose2d.y = y;	//Assign Y to Y in pose2d
+		for(int hi = 0; hi < rangeVector.size(); hi++)
+			poseScan.ranges.push_back(std::atof(rangeVector.at(hi).c_str()));
+
+		//A poseScan should be now fully defined for a designated X and Y position.
+		//Theta can be accounted for with iterations
+
+		pub_PoseScan_.publish(poseScan);
 	}
-	}
-		//std::cout << x << " " << y <<std::endl; //Print out X and Y
-	
 }
 
 int main(int argc, char** argv){
 	ros::init(argc, argv, "scan_queue");
 	ros::NodeHandle nh;
 
-	pub_PoseScan_ = nh.advertise<algp1_msgs::PoseScan>("scan_queue", 1);
+	pub_PoseScan_ = nh.advertise<algp1_msgs::PoseScan>("/scan_queue", 1);
 	//sub_newBool_ = nh.subscribe("/newData", 10, updateBool);
 	parseFile();
 
