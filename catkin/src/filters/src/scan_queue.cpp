@@ -80,7 +80,7 @@ void parseFile(){
 					if(delim > 1){
 						tmp.resize(delim);
 						rangeVector.push_back(tmp);
-						std::cout << a << " - "<< tmp << std::endl;
+						//std::cout << a << " - "<< tmp << std::endl;
 
 					}
 				}
@@ -93,7 +93,7 @@ void parseFile(){
 
 		//A poseScan should be now fully defined for a designated X and Y position.
 		//Theta can be accounted for with iterations
-
+		//std::cout << poseScan.ranges.at(5) << std::endl;
 		pub_PoseScan_.publish(poseScan);
 	}
 }
@@ -104,6 +104,7 @@ int main(int argc, char** argv){
 
 	pub_PoseScan_ = nh.advertise<algp1_msgs::PoseScan>("/scan_queue", 1);
 	//sub_newBool_ = nh.subscribe("/newData", 10, updateBool);
+
 	parseFile();
 
 	ros::spin();
