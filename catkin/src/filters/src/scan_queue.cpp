@@ -81,19 +81,28 @@ void parseFile(){
 						tmp.resize(delim);
 						rangeVector.push_back(tmp);
 						//std::cout << a << " - "<< tmp << std::endl;
-
 					}
 				}
 			}
 		}
 		poseScan.pose2d.x = x;	//Assign X to X in pose2d
 		poseScan.pose2d.y = y;	//Assign Y to Y in pose2d
+
+		std::cout << rangeVector.size() << std::endl;
+
 		for(int hi = 0; hi < rangeVector.size(); hi++)
 			poseScan.ranges.push_back(std::atof(rangeVector.at(hi).c_str()));
 
 		//A poseScan should be now fully defined for a designated X and Y position.
 		//Theta can be accounted for with iterations
 		//std::cout << poseScan.ranges.at(5) << std::endl;
+
+		//assign angles based on iterator inside
+		for(int ang = 1; ang <= 8; ang++){
+			
+		}
+
+
 		pub_PoseScan_.publish(poseScan);
 	}
 }
