@@ -17,6 +17,8 @@ geometry_msgs/Twist.h
 -
 algp1_msgs/Pose2DWithCovariance.h
 -
+iostream
+-
 
 /opt/ros/hydro/include/XmlRpcDecl.h
 ros/macros.h

@@ -40,7 +40,21 @@ void updateVelocityModel(const algp1_msgs::Pose2DWithCovariance &vel){
 
 //Callback function to update the sensor model var
 void updateSensorModel(const algp1_msgs::Pose2DWithCovariance &sen){
-	sense_model_ = sen;
+	//sense_model_ = sen;
+	sense_model_.pose2d.x = 1.3;
+	sense_model_.pose2d.y = 1.3;
+	sense_model_.pose2d.theta = 1.3;
+
+	sense_model_.covariance[0] = 0.00990099;
+	sense_model_.covariance[1] = 0.00990099;
+	sense_model_.covariance[2] = 0.00990099;
+	sense_model_.covariance[3] = 0.00990099;
+	sense_model_.covariance[4] = 0.00990099;
+	sense_model_.covariance[5] = 0.00990099;
+	sense_model_.covariance[6] = 0.00990099;
+	sense_model_.covariance[7] = 0.00990099;
+	sense_model_.covariance[8] = 0.00990099;
+
 }
 
 float determinant(float matrix[][3])
@@ -116,6 +130,13 @@ void multiply3x3(array_3x3_type& arr, float a[3][3], float b[3][3]){
 
 }
 
+void multiply3x1and3x3(array_3x1_type& arr, float b[3][3], float a[3]){
+	arr[0] = (b[0][0] * a[0]) + (b[0][1] * a[1]) + (b[0][2] * a[2]);
+	arr[1] = (b[1][0] * a[0]) + (b[1][1] * a[1]) + (b[1][2] * a[2]);
+	arr[2] = (b[2][0] * a[0]) + (b[2][1] * a[1]) + (b[2][2] * a[2]);
+
+}
+
 void add3x3(array_3x3_type& arr, float a[3][3], float b[3][3]){
 
 	for(int i = 0; i < 3; i++){
@@ -136,6 +157,15 @@ void sub3x3(array_3x3_type& arr, float a[3][3], float b[3][3]){
 
 }
 
+void add3x1(array_3x1_type& arr, float a[3], float b[3]){
+
+	for(int j = 0; j < 3; j++){
+		arr[j] = a[j] + b[j];
+	}
+
+}
+
+
 void sub3x1(array_3x1_type& arr, float a[3], float b[3]){
 
 	for(int j = 0; j < 3; j++){
@@ -144,20 +174,28 @@ void sub3x1(array_3x1_type& arr, float a[3], float b[3]){
 
 }
 
+void print3x3(float a[3][3]){
+	for (int foo = 0; foo < 3; foo++) {
+        for (int bar = 0; bar < 3; bar++){
+            std::cout << a[0][0] << " ";
+        }
+        std::cout << "\n";
+    }
+}
 
-void kf(float prevMean, float prevCov[3][3], algp1_msgs::Pose2DWithCovariance action, algp1_msgs::Pose2DWithCovariance measure){
-	if(true == false){ //Base case death
-		ros::shutdown();
+
+void kf(float prevCov[3][3], algp1_msgs::Pose2DWithCovariance action, algp1_msgs::Pose2DWithCovariance measure){
+	bool kill = false;
+	if(kalmanIteration > 10){ //Base case death
+		kill = true;
 	}
-
-	//All matricies are represented in row-major notation
-	// {1, 2, 3 / 4, 5, 6 / 7, 8, 9} ya dig?
 
 	//The initial state prediction goes here
 	float X_o [3]={		1,
 					 	1,
 					 	0
 					};
+
 	float Z_n [3];
 	Z_n[0] = sense_model_.pose2d.x;
 	Z_n[1] = sense_model_.pose2d.y;
@@ -168,16 +206,19 @@ void kf(float prevMean, float prevCov[3][3], algp1_msgs::Pose2DWithCovariance ac
 					 {	0,		1,		0},
 					 {	0,		0,		1}};
 	float A_t [3][3] =	{{	1,		0,		0},
-					 {	0,		1,		0},
-					 {	0,		0,		1}};
+					 	{	0,		1,		0},
+					 	{	0,		0,		1}};
 					 				
 	float H [3][3] = {{	1,		0,		0},	//plz make this stay I so everything below works
 					 {	0,		1,		0},
 					 {	0,		0,		1}};
 
-	float P [3][3] = {{	1,		0,		0},
-					 {	0,		1,		0},
-					 {	0,		0,		1}};
+	float P [3][3];
+	for(int i = 0; i < 3; i++){
+		for(int j = 0; j < 3; j++){
+			P[i][j] = prevCov[i][j];
+		}
+	}
 
 	float Q [3][3] = {{	0.01,	0,		0},
 					 {	0,		0.01,	0},
@@ -187,9 +228,9 @@ void kf(float prevMean, float prevCov[3][3], algp1_msgs::Pose2DWithCovariance ac
 					 {	0,		1,		0},
 					 {	0,		0,		1}};
 
-	float meanBar;
-
-
+	float I [3][3] = {{	1,		0,		0},
+					 {	0,		1,		0},
+					 {	0,		0,		1}};
 
 	//------ State prediction (from velocity model)
 	float X_p[2];	
@@ -208,6 +249,7 @@ void kf(float prevMean, float prevCov[3][3], algp1_msgs::Pose2DWithCovariance ac
 	float P_p[3][3];
 	add3x3(P_p, APnm1At, Q);
 
+
 	//------Innovation
 	float Y_tilde[3];
 
@@ -224,11 +266,76 @@ void kf(float prevMean, float prevCov[3][3], algp1_msgs::Pose2DWithCovariance ac
 	add3x3(S, HP_pHt, R);
 
 	//------Kalman Gain
-	
+	float S_inv[3][3];
+
+	try{
+		InvMatrix(S, S_inv);
+	} catch(const char* errorMessage){
+		std::cout << errorMessage << "\n";
+	}
+
+	float P_pHt [3][3];
+	multiply3x3(P_pHt, P_p, H);//NOTE: In this case I assume H = H^T
+
+	float K[3][3];
+	multiply3x3(K, P_pHt, S_inv);
+
+	//------State update (yay!)
+	float Ky[3];
+	multiply3x1and3x3(Ky, K, Y_tilde);
+
+	float X_n[3];				//New state!
+	add3x1(X_n, X_p, Ky);
+
+	//------Covariance update (yay yay!)
+	float KH[3][3];
+	multiply3x3(KH, K, H);
+
+	float IminusKH[3][3];
+	sub3x3(IminusKH, I, KH);
+
+	float P_n[3][3];
+	multiply3x3(P_n, IminusKH, P_p);
+
+	//Publish state update
+	algp1_msgs::Pose2DWithCovariance state;
+
+	state.pose2d.x = X_n[0];
+	state.pose2d.y = X_n[1];
+	state.pose2d.theta = X_n[2];
+
+	state.covariance[0] = P_n[0][0];
+	state.covariance[1] = P_n[0][1];
+	state.covariance[2] = P_n[0][2];
+	state.covariance[3] = P_n[1][0];
+	state.covariance[4] = P_n[1][1];
+	state.covariance[5] = P_n[1][2];
+	state.covariance[6] = P_n[2][0];
+	state.covariance[7] = P_n[2][1];
+	state.covariance[8] = P_n[2][2];
+
+	std::cout << "xn"<< std::endl;
+
+	for (int foo = 0; foo < 3; foo++) {
+        std::cout << X_n[foo] << " ";
+        std::cout << "\n";
+    }
+    
+    std::cout << std::endl;
+    std::cout << "pn"<< std::endl;
+
+	print3x3(P_n);
 
 
-	
-	//float Y_tilde[3] = sub3x1();
+	pub_state_.publish(state);
+	ROS_INFO("pub'd");
+
+	kalmanIteration++;
+	ros::spinOnce();
+	ros::Duration(1).sleep();
+	if(!kill)
+		kf(P_n, vel_model_, sense_model_);
+	//keep repeating until base case has been met
 }
 
 
@@ -237,7 +344,7 @@ int main(int argc, char** argv){
 	ros::NodeHandle nh;
 
 	//needs to accept a P(x| sensor) and a P(x| velocity)
-	sub_vel_model_ = nh.subscribe("/vel_model", 10, updateVelocityModel);
+	sub_vel_model_ = nh.subscribe("/robot0/vel_model/pose", 10, updateVelocityModel);
 	sub_sense_model_ = nh.subscribe("/sense_model", 10, updateSensorModel);
 
 	//then publish a P(x| the fusion of the two n stuff)
@@ -247,7 +354,7 @@ int main(int argc, char** argv){
 
 	//now go forth and do work, son.
 
-	kf(0, initCov, vel_model_, sense_model_);
+	kf(initCov, vel_model_, sense_model_);
 
 	ros::spin();
 	return 0;
