@@ -147,6 +147,20 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+filters/CMakeFiles/kf.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 filters/CMakeFiles/kf.dir/rule
+.PHONY : filters/CMakeFiles/kf.dir/rule
+
+# Convenience name for target.
+kf: filters/CMakeFiles/kf.dir/rule
+.PHONY : kf
+
+# fast build rule for target.
+kf/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f filters/CMakeFiles/kf.dir/build.make filters/CMakeFiles/kf.dir/build
+.PHONY : kf/fast
+
+# Convenience name for target.
 filters/CMakeFiles/scan_queue.dir/rule:
 	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 filters/CMakeFiles/scan_queue.dir/rule
 .PHONY : filters/CMakeFiles/scan_queue.dir/rule
@@ -187,6 +201,30 @@ vel_model: filters/CMakeFiles/vel_model.dir/rule
 vel_model/fast:
 	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f filters/CMakeFiles/vel_model.dir/build.make filters/CMakeFiles/vel_model.dir/build
 .PHONY : vel_model/fast
+
+src/kf.o: src/kf.cpp.o
+.PHONY : src/kf.o
+
+# target to build an object file
+src/kf.cpp.o:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f filters/CMakeFiles/kf.dir/build.make filters/CMakeFiles/kf.dir/src/kf.cpp.o
+.PHONY : src/kf.cpp.o
+
+src/kf.i: src/kf.cpp.i
+.PHONY : src/kf.i
+
+# target to preprocess a source file
+src/kf.cpp.i:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f filters/CMakeFiles/kf.dir/build.make filters/CMakeFiles/kf.dir/src/kf.cpp.i
+.PHONY : src/kf.cpp.i
+
+src/kf.s: src/kf.cpp.s
+.PHONY : src/kf.s
+
+# target to generate assembly for a file
+src/kf.cpp.s:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f filters/CMakeFiles/kf.dir/build.make filters/CMakeFiles/kf.dir/src/kf.cpp.s
+.PHONY : src/kf.cpp.s
 
 src/scan_queue.o: src/scan_queue.cpp.o
 .PHONY : src/scan_queue.o
@@ -270,12 +308,16 @@ help:
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
+	@echo "... kf"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... scan_queue"
 	@echo "... sense_model"
 	@echo "... test"
 	@echo "... vel_model"
+	@echo "... src/kf.o"
+	@echo "... src/kf.i"
+	@echo "... src/kf.s"
 	@echo "... src/scan_queue.o"
 	@echo "... src/scan_queue.i"
 	@echo "... src/scan_queue.s"

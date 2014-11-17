@@ -7,7 +7,6 @@
 *
 * 11.11.14 (Began work)
 */
-
 #include <ros/ros.h>
 
 #include <algp1_msgs/PoseScan.h>
@@ -72,7 +71,7 @@ void parseFile(){
 					ranges = list.at(a).substr(1);
 					ranges.resize(ranges.size()-1);
 			
-					std::string tmp = ranges.substr(0);					//copy over ranges
+					std::string tmp = ranges.substr(0);	//copy over ranges
 					int delim = tmp.find(",");
 							
 					ranges = ranges.substr(delim+1); //ranges is now one element less
@@ -98,6 +97,7 @@ void parseFile(){
 		//std::cout << poseScan.ranges.at(5) << std::endl;
 
 		//assign angles based on iterator inside
+
 		for(int ang = 1; ang <= 8; ang++){
 			
 		}

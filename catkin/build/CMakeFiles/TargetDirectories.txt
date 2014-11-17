@@ -15,6 +15,7 @@
 /home/luc/ros_workspace/alg_robo_p1/catkin/build/motion/CMakeFiles/geometry_msgs_generate_messages_py.dir
 /home/luc/ros_workspace/alg_robo_p1/catkin/build/gtest/CMakeFiles/gtest.dir
 /home/luc/ros_workspace/alg_robo_p1/catkin/build/gtest/CMakeFiles/gtest_main.dir
+/home/luc/ros_workspace/alg_robo_p1/catkin/build/filters/CMakeFiles/kf.dir
 /home/luc/ros_workspace/alg_robo_p1/catkin/build/motion/CMakeFiles/laser_sweep.dir
 /home/luc/ros_workspace/alg_robo_p1/catkin/build/motion/CMakeFiles/nav_msgs_generate_messages_cpp.dir
 /home/luc/ros_workspace/alg_robo_p1/catkin/build/motion/CMakeFiles/nav_msgs_generate_messages_lisp.dir
