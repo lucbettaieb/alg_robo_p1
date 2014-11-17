@@ -15,6 +15,9 @@
 #include <nav_msgs/Odometry.h>
 #include <geometry_msgs/Twist.h>
 #include <algp1_msgs/Pose2DWithCovariance.h>
+#include <iostream>
+
+void InvMatrix(float src[][3], float dst[][3]);
 
 typedef float array_3x3_type[3][3];
 typedef float array_3x1_type[3];
@@ -38,6 +41,63 @@ void updateVelocityModel(const algp1_msgs::Pose2DWithCovariance &vel){
 //Callback function to update the sensor model var
 void updateSensorModel(const algp1_msgs::Pose2DWithCovariance &sen){
 	sense_model_ = sen;
+}
+
+float determinant(float matrix[][3])
+{
+    float det = 0;
+    for (int i = 0; i < 3; ++i)
+        det += matrix[0][i]*matrix[1][(i+1)%3]*matrix[2][(i+2)%3]
+               - matrix[2][i]*matrix[1][(i+1)%3]*matrix[0][(i+2)%3];
+    return det;
+}
+
+float min0r(float matrix[][3], int row, int col)
+{
+    int ir = row == 1 ? -1 : 1;
+    int ic = col == 1 ? -1 : 1;
+    float a = matrix[(row+ir+3)%3][(col+ic+3)%3];
+    float b = matrix[(row+ir+3)%3][(col-ic+3)%3];
+    float c = matrix[(row-ir+3)%3][(col+ic+3)%3];
+    float d = matrix[(row-ir+3)%3][(col-ic+3)%3];
+    return a*d - b*c;
+}
+
+void getCofactorMatrix(float src[][3], float dst[][3])
+{
+    bool neg = false;
+    for (int r = 0; r < 3; ++r)
+        for (int c = 0; c < 3; ++c)
+        {
+            dst[r][c] = min0r(src, r, c) * (neg ? -1 : 1);
+            neg = !neg;
+        }
+}
+
+void swapValue(float& a, float& b)
+{
+    float temp = a;
+    a = b;
+    b = temp;
+}
+
+void transpose(float matrix[][3])
+{
+    for (int r = 0; r < 3; ++r)
+        for (int c = r+1; c < 3; ++c)
+            if (r != c)
+                swapValue(matrix[r][c], matrix[c][r]);
+}
+
+void InvMatrix(float src[][3], float dst[][3])
+{
+    float det = determinant(src);
+    if (!det) throw "Singular matrix, cannot inverse.";
+    getCofactorMatrix(src, dst);
+    transpose(dst);
+    for (int r = 0; r < 3; ++r)
+        for (int c = 0; c < 3; ++c)
+            dst[r][c] /= det;
 }
 
 void multiply3x3(array_3x3_type& arr, float a[3][3], float b[3][3]){
@@ -98,7 +158,11 @@ void kf(float prevMean, float prevCov[3][3], algp1_msgs::Pose2DWithCovariance ac
 					 	1,
 					 	0
 					};
-	//
+	float Z_n [3];
+	Z_n[0] = sense_model_.pose2d.x;
+	Z_n[1] = sense_model_.pose2d.y;
+	Z_n[2] = sense_model_.pose2d.theta;
+
 
 	float A [3][3] = {{	1,		0,		0},
 					 {	0,		1,		0},
@@ -107,7 +171,7 @@ void kf(float prevMean, float prevCov[3][3], algp1_msgs::Pose2DWithCovariance ac
 					 {	0,		1,		0},
 					 {	0,		0,		1}};
 					 				
-	float H [3][3] = {{	1,		0,		0},
+	float H [3][3] = {{	1,		0,		0},	//plz make this stay I so everything below works
 					 {	0,		1,		0},
 					 {	0,		0,		1}};
 
@@ -125,14 +189,44 @@ void kf(float prevMean, float prevCov[3][3], algp1_msgs::Pose2DWithCovariance ac
 
 	float meanBar;
 
-	float X_p[2];	//State prediction (from velocity model)
+
+
+	//------ State prediction (from velocity model)
+	float X_p[2];	
 	X_p[0] = action.pose2d.x;
 	X_p[1] = action.pose2d.y;
 	X_p[2] = action.pose2d.theta;
 
-	//float Z_n[2]
+	
+	//------ Covariance Prediction
+	float APnm1[3][3];
+	multiply3x3(APnm1, A, P);
+	
+	float APnm1At[3][3];
+	multiply3x3(APnm1At, APnm1, A_t);
+	
+	float P_p[3][3];
+	add3x3(P_p, APnm1At, Q);
 
-	//float P_p[3][3] = add3x3(multiply3x3(multiply3x3(A,P), A_t), Q);
+	//------Innovation
+	float Y_tilde[3];
+
+	sub3x1(Y_tilde, Z_n, X_p); //NOTE: In a fully implemented kalman filter where H is not [I], this step is incorrect.
+
+	//------Innovation Covariance
+	float HP_p[3][3];
+	multiply3x3(HP_p, H, P_p);
+
+	float HP_pHt[3][3];
+	multiply3x3(HP_pHt, HP_p, H); //NOTE: In this case I assume H = H^T
+
+	float S[3][3];
+	add3x3(S, HP_pHt, R);
+
+	//------Kalman Gain
+	
+
+
 	
 	//float Y_tilde[3] = sub3x1();
 }
