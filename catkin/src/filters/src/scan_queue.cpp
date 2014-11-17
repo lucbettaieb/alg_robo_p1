@@ -62,7 +62,7 @@ void parseFile(){
 		
 		for(int a = 0; a < list.size(); a++){ 	//Loop through the entire vector again
 			if((a % 10)!= 0){			//And if its not one of the lines where there is a []
-				rangeVector.clear();
+				
 
 				std::string ranges;
 				ranges = list.at(a);
@@ -81,39 +81,25 @@ void parseFile(){
 			
 				for(int hi = 0; hi < rangeVector.size(); hi++){
 					angleCount++;
-					std::cout << rangeVector.at(hi) << " ";
+					//std::cout << rangeVector.at(hi) << " ";
 					//std::cout << rangeVector.size() << "\n";
 					poseScan.ranges.push_back(std::atof(rangeVector.at(hi).c_str()));
-
+					//std::cout << rangeVector.at(hi) << std::endl;
 					if(angleCount > 17 ){
 						angleCount = 0;
 					}
+					poseScan.pose2d.theta = angleCount;
+
+
+
 				}
-
-
+				pub_PoseScan_.publish(poseScan);
+				
+				ros::Duration(1).sleep();
+				ros::spinOnce();
+				
 			}
 		}
-
-
-
-		
-
-		//std::cout << rangeVector.size() << std::endl;
-
-		//rangeVector.size()
-		
-		//A poseScan should be now fully defined for a designated X and Y position.
-		//Theta can be accounted for with iterations
-		//std::cout << poseScan.ranges.at(5) << std::endl;
-
-		//assign angles based on iterator inside
-
-		for(int ang = 1; ang <= 8; ang++){
-			
-		}
-
-		ros::Duration(.1).sleep();
-		pub_PoseScan_.publish(poseScan);
 	}
 }
 

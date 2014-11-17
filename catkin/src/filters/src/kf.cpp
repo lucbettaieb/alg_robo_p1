@@ -333,6 +333,7 @@ void kf(float prevCov[3][3], algp1_msgs::Pose2DWithCovariance action, algp1_msgs
 	kalmanIteration++;
 	ros::spinOnce();
 	ros::Duration(1).sleep();
+	
 	if(!kill)
 		kf(P_n, vel_model_, sense_model_);
 	//keep repeating until base case has been met
