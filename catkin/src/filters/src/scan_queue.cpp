@@ -15,7 +15,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
-
+int angleCount = 0;
 ros::Publisher pub_PoseScan_;	//Publisher to provide a new PoseScan message to sense_model
 ros::Subscriber sub_newBool_;	//Subscriber to check whether or not to get a new set of data from the rangemap.
 
@@ -35,63 +35,73 @@ void parseFile(){
 	
 	list.clear();
 	
-	line.resize(6000);
 	ROS_INFO("Copying file to vector");
 
-	for(int i = 0; i < 1960; i++){
-		if(std::getline(fin, line)){ 	//If there is a line to get
+	while(std::getline(fin, line)){ 	//If there is a line to get
 			list.push_back(line);		//Push it to the vector
-		}
 	}
+	
 
 	ROS_INFO("Done copying file to vector.");
 
-	for(int i = 0; i < 1960; i+= 10){ 	//For every 10th element ([x,y])
+	for(int i = 0; i < list.size(); i+= 10){ 	//For every 10th element ([x,y])
 		int com = list.at(i).find(",");	//Find the comma
+		
 		std::vector<std::string> rangeVector;	//DEFINE VECTOR TO HOLD RANGES that will be assigned to pose2d things
-
+		
+		
 		std::string ex = list.at(i).substr(1,com-1); 	//Create a string that will represent X
-		std::string ey = list.at(i).substr(com+1);	 	//Create a strong that will represent Y] (for some reason the bracket stays)
+		std::string ey = list.at(i).substr(com+1);	 	//Create a string that will represent Y] (for some reason the bracket stays)
 		ey.resize(ey.size()-1);						 	//Remove the bracket
 
 		float x = (float)std::atoi(ex.c_str());	//Make a float from the string for X
 		float y = (float)std::atoi(ey.c_str());	//And Y
-
-		for(int a = 0; a < 1960; a++){ 	//Loop through the entire vector again
+		
+		poseScan.pose2d.x = x;	//Assign X to X in pose2d
+		poseScan.pose2d.y = y;	//Assign Y to Y in pose2d
+		
+		for(int a = 0; a < list.size(); a++){ 	//Loop through the entire vector again
 			if((a % 10)!= 0){			//And if its not one of the lines where there is a []
-
+				rangeVector.clear();
 
 				std::string ranges;
-				//ranges.resize(6000);
 				ranges = list.at(a);
-				//std::cout << ranges.size() << std::endl;
 
 				if(ranges.size() > 2){ //If the line is not blank
 				
-					ranges = list.at(a).substr(1);
-					ranges.resize(ranges.size()-1);
-			
-					std::string tmp = ranges.substr(0);	//copy over ranges
-					int delim = tmp.find(",");
-							
-					ranges = ranges.substr(delim+1); //ranges is now one element less
+					std::istringstream ss(ranges);
+					while(ss){
+						std::string ranges;
+						if(!getline(ss, ranges, ',')) break;
+						rangeVector.push_back(ranges);
+					}
 
-					if(delim > 1){
-						tmp.resize(delim);
-						rangeVector.push_back(tmp);
-						//std::cout << a << " - "<< tmp << std::endl;
+
+				}
+			
+				for(int hi = 0; hi < rangeVector.size(); hi++){
+					angleCount++;
+					std::cout << rangeVector.at(hi) << " ";
+					//std::cout << rangeVector.size() << "\n";
+					poseScan.ranges.push_back(std::atof(rangeVector.at(hi).c_str()));
+
+					if(angleCount > 17 ){
+						angleCount = 0;
 					}
 				}
+
+
 			}
 		}
-		poseScan.pose2d.x = x;	//Assign X to X in pose2d
-		poseScan.pose2d.y = y;	//Assign Y to Y in pose2d
 
-		std::cout << rangeVector.size() << std::endl;
 
-		for(int hi = 0; hi < rangeVector.size(); hi++)
-			poseScan.ranges.push_back(std::atof(rangeVector.at(hi).c_str()));
 
+		
+
+		//std::cout << rangeVector.size() << std::endl;
+
+		//rangeVector.size()
+		
 		//A poseScan should be now fully defined for a designated X and Y position.
 		//Theta can be accounted for with iterations
 		//std::cout << poseScan.ranges.at(5) << std::endl;
@@ -102,7 +112,7 @@ void parseFile(){
 			
 		}
 
-
+		ros::Duration(.1).sleep();
 		pub_PoseScan_.publish(poseScan);
 	}
 }
