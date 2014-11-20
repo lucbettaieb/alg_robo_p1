@@ -7,6 +7,7 @@
 *
 * 11.20.14
 */
+
 #include <ros/ros.h>
 
 #include <algp1_msgs/PoseScan.h>
@@ -17,12 +18,19 @@
 
 #include <string>
 #include <vector>
+#include <queue>
 
 ros::Publisher pub_PoseScan_;	//Publisher to publish a new poseScan
 ros::Subscriber sub_newBool_;	//Boolean to check whether or not to publish a new dataset
 
+std::queue<algp1_msgs::PoseScan> scanQueue_;
+
 int angleCount_ = 2;
-bool newData_ = true;
+std_msgs::Bool newData_;
+
+void updateBool (const std_msgs::Bool &bol){
+	newData_.data = bol.data;
+}
 
 void parseFile(){
 	algp1_msgs::PoseScan poseScan;
@@ -76,8 +84,6 @@ void parseFile(){
 				range_vector.push_back(ranges);
 			}
 
-			std::cout << "size of range_vector" <<range_vector.size() << std::endl;
-
 			//rangeVector is now populated with ranges corresponding to a certain angle for a certain xy
 			poseScan.pose2d.theta = a % 10;
 
@@ -87,13 +93,16 @@ void parseFile(){
 				poseScan.ranges.push_back(std::atof(range_vector.at(ran).c_str()));
 			}
 
-			pub_PoseScan_.publish(poseScan);
+			//Add to queue
+			scanQueue_.push(poseScan);
+			
+			//pub_PoseScan_.publish(poseScan); //for publishing
 
 			range_vector.clear();
 			poseScan.ranges.clear();
 
-			ros::Duration(1).sleep();
-			ros::spinOnce();
+			//ros::Duration(1).sleep(); //for publishing
+			//ros::spinOnce(); //for publishing
 		}
 	}
 }
@@ -103,9 +112,24 @@ int main(int argc, char** argv){
 	ros::NodeHandle nh;
 
 	pub_PoseScan_ = nh.advertise<algp1_msgs::PoseScan>("/scan_queue", 1);
-
+	sub_newBool_ = nh.subscribe("/update_queue", 10, updateBool);
+		
+	ROS_INFO("Parsing file and adding to queue.");
 	parseFile();
+	ROS_INFO("Done adding to queue");
 
-	ros::spin();
+	while(ros::ok()){
+
+		if(newData_.data){
+			pub_PoseScan_.publish(scanQueue_.front());
+			scanQueue_.pop();
+			newData_.data = false;
+		}
+
+		ros::spinOnce();
+	}
+
+
+	//ros::spin();
 	return 0;
 }
