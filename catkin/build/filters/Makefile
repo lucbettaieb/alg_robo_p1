@@ -175,6 +175,20 @@ scan_queue/fast:
 .PHONY : scan_queue/fast
 
 # Convenience name for target.
+filters/CMakeFiles/scan_queue_2.dir/rule:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 filters/CMakeFiles/scan_queue_2.dir/rule
+.PHONY : filters/CMakeFiles/scan_queue_2.dir/rule
+
+# Convenience name for target.
+scan_queue_2: filters/CMakeFiles/scan_queue_2.dir/rule
+.PHONY : scan_queue_2
+
+# fast build rule for target.
+scan_queue_2/fast:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f filters/CMakeFiles/scan_queue_2.dir/build.make filters/CMakeFiles/scan_queue_2.dir/build
+.PHONY : scan_queue_2/fast
+
+# Convenience name for target.
 filters/CMakeFiles/sense_model.dir/rule:
 	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f CMakeFiles/Makefile2 filters/CMakeFiles/sense_model.dir/rule
 .PHONY : filters/CMakeFiles/sense_model.dir/rule
@@ -250,6 +264,30 @@ src/scan_queue.cpp.s:
 	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f filters/CMakeFiles/scan_queue.dir/build.make filters/CMakeFiles/scan_queue.dir/src/scan_queue.cpp.s
 .PHONY : src/scan_queue.cpp.s
 
+src/scan_queue_2.o: src/scan_queue_2.cpp.o
+.PHONY : src/scan_queue_2.o
+
+# target to build an object file
+src/scan_queue_2.cpp.o:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f filters/CMakeFiles/scan_queue_2.dir/build.make filters/CMakeFiles/scan_queue_2.dir/src/scan_queue_2.cpp.o
+.PHONY : src/scan_queue_2.cpp.o
+
+src/scan_queue_2.i: src/scan_queue_2.cpp.i
+.PHONY : src/scan_queue_2.i
+
+# target to preprocess a source file
+src/scan_queue_2.cpp.i:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f filters/CMakeFiles/scan_queue_2.dir/build.make filters/CMakeFiles/scan_queue_2.dir/src/scan_queue_2.cpp.i
+.PHONY : src/scan_queue_2.cpp.i
+
+src/scan_queue_2.s: src/scan_queue_2.cpp.s
+.PHONY : src/scan_queue_2.s
+
+# target to generate assembly for a file
+src/scan_queue_2.cpp.s:
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build && $(MAKE) -f filters/CMakeFiles/scan_queue_2.dir/build.make filters/CMakeFiles/scan_queue_2.dir/src/scan_queue_2.cpp.s
+.PHONY : src/scan_queue_2.cpp.s
+
 src/sense_model.o: src/sense_model.cpp.o
 .PHONY : src/sense_model.o
 
@@ -312,6 +350,7 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... scan_queue"
+	@echo "... scan_queue_2"
 	@echo "... sense_model"
 	@echo "... test"
 	@echo "... vel_model"
@@ -321,6 +360,9 @@ help:
 	@echo "... src/scan_queue.o"
 	@echo "... src/scan_queue.i"
 	@echo "... src/scan_queue.s"
+	@echo "... src/scan_queue_2.o"
+	@echo "... src/scan_queue_2.i"
+	@echo "... src/scan_queue_2.s"
 	@echo "... src/sense_model.o"
 	@echo "... src/sense_model.i"
 	@echo "... src/sense_model.s"

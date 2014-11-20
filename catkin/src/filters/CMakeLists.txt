@@ -28,6 +28,7 @@ include_directories(
 add_executable(vel_model src/vel_model.cpp)
 add_executable(sense_model src/sense_model.cpp)
 add_executable(scan_queue src/scan_queue.cpp)
+add_executable(scan_queue_2 src/scan_queue_2.cpp)
 add_executable(kf src/kf.cpp)
 
 ## Add cmake target dependencies of the executable/library
@@ -44,6 +45,9 @@ target_link_libraries(sense_model
 )
 
 target_link_libraries(scan_queue
+   ${catkin_LIBRARIES}
+)
+target_link_libraries(scan_queue_2
    ${catkin_LIBRARIES}
 )
 

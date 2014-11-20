@@ -15,7 +15,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
-int angleCount = 0;
+int angleCount = 2;
 ros::Publisher pub_PoseScan_;	//Publisher to provide a new PoseScan message to sense_model
 ros::Subscriber sub_newBool_;	//Subscriber to check whether or not to get a new set of data from the rangemap.
 
@@ -80,18 +80,23 @@ void parseFile(){
 				}
 			
 				for(int hi = 0; hi < rangeVector.size(); hi++){
-					angleCount++;
+					//poseScan.ranges.clear();
+
+					angleCount = angleCount+2;
+
 					//std::cout << rangeVector.at(hi) << " ";
 					//std::cout << rangeVector.size() << "\n";
 					poseScan.ranges.push_back(std::atof(rangeVector.at(hi).c_str()));
 					//std::cout << rangeVector.at(hi) << std::endl;
-					if(angleCount > 17 ){
-						angleCount = 0;
+					if(angleCount > 16 ){
+						angleCount = 2;
+						
 					}
+					
 					poseScan.pose2d.theta = angleCount;
+					//std::cout << poseScan.pose2d.theta << std::endl;
 
-
-
+					
 				}
 				pub_PoseScan_.publish(poseScan);
 				

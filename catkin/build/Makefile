@@ -784,6 +784,19 @@ scan_queue/fast:
 .PHONY : scan_queue/fast
 
 #=============================================================================
+# Target rules for targets named scan_queue_2
+
+# Build rule for target.
+scan_queue_2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 scan_queue_2
+.PHONY : scan_queue_2
+
+# fast build rule for target.
+scan_queue_2/fast:
+	$(MAKE) -f filters/CMakeFiles/scan_queue_2.dir/build.make filters/CMakeFiles/scan_queue_2.dir/build
+.PHONY : scan_queue_2/fast
+
+#=============================================================================
 # Target rules for targets named sense_model
 
 # Build rule for target.
@@ -871,6 +884,7 @@ help:
 	@echo "... algp1_msgs_genpy"
 	@echo "... kf"
 	@echo "... scan_queue"
+	@echo "... scan_queue_2"
 	@echo "... sense_model"
 	@echo "... vel_model"
 .PHONY : help
