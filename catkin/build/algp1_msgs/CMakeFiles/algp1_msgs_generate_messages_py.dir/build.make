@@ -43,6 +43,7 @@ CMAKE_BINARY_DIR = /home/luc/ros_workspace/alg_robo_p1/catkin/build
 include algp1_msgs/CMakeFiles/algp1_msgs_generate_messages_py.dir/progress.make
 
 algp1_msgs/CMakeFiles/algp1_msgs_generate_messages_py: /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/_PoseScan.py
+algp1_msgs/CMakeFiles/algp1_msgs_generate_messages_py: /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/_PoseScanVector.py
 algp1_msgs/CMakeFiles/algp1_msgs_generate_messages_py: /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/_Pose2DWithCovariance.py
 algp1_msgs/CMakeFiles/algp1_msgs_generate_messages_py: /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/__init__.py
 
@@ -53,22 +54,32 @@ algp1_msgs/CMakeFiles/algp1_msgs_generate_messages_py: /home/luc/ros_workspace/a
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python from MSG algp1_msgs/PoseScan"
 	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build/algp1_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/hydro/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/PoseScan.msg -Ialgp1_msgs:/home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg -Istd_msgs:/opt/ros/hydro/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/hydro/share/geometry_msgs/cmake/../msg -Inav_msgs:/opt/ros/hydro/share/nav_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/hydro/share/actionlib_msgs/cmake/../msg -p algp1_msgs -o /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg
 
+/home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/_PoseScanVector.py: /opt/ros/hydro/share/genpy/cmake/../../../lib/genpy/genmsg_py.py
+/home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/_PoseScanVector.py: /home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/PoseScanVector.msg
+/home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/_PoseScanVector.py: /home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/PoseScan.msg
+/home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/_PoseScanVector.py: /opt/ros/hydro/share/geometry_msgs/cmake/../msg/Pose2D.msg
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luc/ros_workspace/alg_robo_p1/catkin/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python from MSG algp1_msgs/PoseScanVector"
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build/algp1_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/hydro/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/PoseScanVector.msg -Ialgp1_msgs:/home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg -Istd_msgs:/opt/ros/hydro/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/hydro/share/geometry_msgs/cmake/../msg -Inav_msgs:/opt/ros/hydro/share/nav_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/hydro/share/actionlib_msgs/cmake/../msg -p algp1_msgs -o /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg
+
 /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/_Pose2DWithCovariance.py: /opt/ros/hydro/share/genpy/cmake/../../../lib/genpy/genmsg_py.py
 /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/_Pose2DWithCovariance.py: /home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/Pose2DWithCovariance.msg
 /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/_Pose2DWithCovariance.py: /opt/ros/hydro/share/geometry_msgs/cmake/../msg/Pose2D.msg
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luc/ros_workspace/alg_robo_p1/catkin/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luc/ros_workspace/alg_robo_p1/catkin/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python from MSG algp1_msgs/Pose2DWithCovariance"
 	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build/algp1_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/hydro/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/Pose2DWithCovariance.msg -Ialgp1_msgs:/home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg -Istd_msgs:/opt/ros/hydro/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/hydro/share/geometry_msgs/cmake/../msg -Inav_msgs:/opt/ros/hydro/share/nav_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/hydro/share/actionlib_msgs/cmake/../msg -p algp1_msgs -o /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg
 
 /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/__init__.py: /opt/ros/hydro/share/genpy/cmake/../../../lib/genpy/genmsg_py.py
 /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/__init__.py: /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/_PoseScan.py
+/home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/__init__.py: /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/_PoseScanVector.py
 /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/__init__.py: /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/_Pose2DWithCovariance.py
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luc/ros_workspace/alg_robo_p1/catkin/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luc/ros_workspace/alg_robo_p1/catkin/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python msg __init__.py for algp1_msgs"
 	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build/algp1_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/hydro/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg --initpy
 
 algp1_msgs_generate_messages_py: algp1_msgs/CMakeFiles/algp1_msgs_generate_messages_py
 algp1_msgs_generate_messages_py: /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/_PoseScan.py
+algp1_msgs_generate_messages_py: /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/_PoseScanVector.py
 algp1_msgs_generate_messages_py: /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/_Pose2DWithCovariance.py
 algp1_msgs_generate_messages_py: /home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/__init__.py
 algp1_msgs_generate_messages_py: algp1_msgs/CMakeFiles/algp1_msgs_generate_messages_py.dir/build.make

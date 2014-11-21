@@ -1,6 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/algp1_msgs_generate_messages_py"
   "/home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/_PoseScan.py"
+  "/home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/_PoseScanVector.py"
   "/home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/_Pose2DWithCovariance.py"
   "/home/luc/ros_workspace/alg_robo_p1/catkin/devel/lib/python2.7/dist-packages/algp1_msgs/msg/__init__.py"
 )
