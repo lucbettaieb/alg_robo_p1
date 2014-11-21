@@ -56,6 +56,8 @@ void parseFile(){
 
 	ROS_INFO("Done copying file to vector.  Each element of the vector is a line of the file.");
 	for(int xy = 0; xy < list.size(); xy += 10){ //Every 10th element is a X or Y
+		//algp1_msgs::PoseScan *poseScan = new algp1_msgs::PoseScan;
+
 		//For every 10th element, starting at 10,
 		int comma = list.at(xy).find(",");
 

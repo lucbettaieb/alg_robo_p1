@@ -5,14 +5,6 @@ filters/CMakeFiles/sense_model.dir/src/sense_model.cpp.o
  /home/luc/ros_workspace/alg_robo_p1/catkin/src/filters/src/sense_model.cpp
  /opt/ros/hydro/include/XmlRpcDecl.h
  /opt/ros/hydro/include/XmlRpcValue.h
- /opt/ros/hydro/include/geometry_msgs/Point.h
- /opt/ros/hydro/include/geometry_msgs/Pose.h
- /opt/ros/hydro/include/geometry_msgs/PoseWithCovariance.h
- /opt/ros/hydro/include/geometry_msgs/Quaternion.h
- /opt/ros/hydro/include/geometry_msgs/Twist.h
- /opt/ros/hydro/include/geometry_msgs/TwistWithCovariance.h
- /opt/ros/hydro/include/geometry_msgs/Vector3.h
- /opt/ros/hydro/include/nav_msgs/Odometry.h
  /opt/ros/hydro/include/ros/advertise_options.h
  /opt/ros/hydro/include/ros/advertise_service_options.h
  /opt/ros/hydro/include/ros/assert.h
