@@ -32,20 +32,23 @@ ros::Subscriber sub_Odom_; //subscribing to /robot0/odom to see if there will be
 sensor_msgs::LaserScan current_scan_; //access ranges
 algp1_msgs::PoseScanVector pose_scan_vector_; 	//access ranges
 std::vector<geometry_msgs::Pose2D> potentialPoses_;
-float current_avg_ = 0;
 
-const float tolerance_ = 0.005;
+algp1_msgs::Pose2DWithCovariance dat_pose_doe_;
+
+// float current_avg_ = 0;
+
+const float tolerance_ = 0.25;
 
 void updateLaser(const sensor_msgs::LaserScan &laser){
 	//ROS_INFO("Got new scan data, current_scan_ updated.");
 	current_scan_ = laser;
-	int numInf = 0;
-	for(int i = 0; i < current_scan_.ranges.size(); i++){
-		if(current_scan_.ranges.at(i) < 10000){ //if !inf
-			current_avg_ += current_scan_.ranges.at(i);
-		} else numInf++;
-	}
-	current_avg_ /= (current_scan_.ranges.size()-numInf);
+	// int numInf = 0;
+	// for(int i = 0; i < current_scan_.ranges.size(); i++){
+	// 	if(current_scan_.ranges.at(i) < 10000){ //if !inf
+	// 		current_avg_ += current_scan_.ranges.at(i);
+	// 	} else numInf++;
+	// }
+	// current_avg_ /= (current_scan_.ranges.size()-numInf);
 }
 
 void updateMap(const algp1_msgs::PoseScanVector &scan){
@@ -53,41 +56,34 @@ void updateMap(const algp1_msgs::PoseScanVector &scan){
 	pose_scan_vector_ = scan;
 }
 
+float averageDifferenceScans(sensor_msgs::LaserScan &scan1, algp1_msgs::PoseScan &scan2){ //pass by reference because we will only be accessing the vector elements
+	//ROS_INFO("hi");
+	float avg = 0;
+	int numInf=0;
+	for(int i = 0; i < scan1.ranges.size(); i++){
+		if(scan1.ranges.at(i) < 10000000000 && scan2.ranges.at(i) < 10000000000){
+			avg += std::abs(scan1.ranges.at(i) - scan2.ranges.at(i));
+		} else numInf++;
+	}
+
+	return avg / (scan1.ranges.size()-numInf);
+}
+
 void updateModel(const nav_msgs::Odometry &odom){
 	//ROS_INFO("Updating");
 	for(int i = 0; i < pose_scan_vector_.scans.size(); i++){
 		
-		for(int j = 0; j < pose_scan_vector_.scans.at(i).ranges.size(); j++){
-
-			float avgCheck = 0;
-			int numInf = 0;
-			for(int k = 0; k < pose_scan_vector_.scans.at(i).ranges.size(); k++){
-				if(pose_scan_vector_.scans.at(i).ranges.at(k) < 10000){ //if !inf
-					avgCheck +=pose_scan_vector_.scans.at(i).ranges.at(k);
-				}else numInf++;
-			}
-			avgCheck /= pose_scan_vector_.scans.at(i).ranges.size()-numInf;
-			if(std::abs(current_avg_ - avgCheck) < tolerance_){
-				ROS_INFO("we did it");
-				std::cout << std::abs(current_avg_ - avgCheck) << std::endl;
-				std::cout << pose_scan_vector_.scans.at(i).pose2d.x << " | " << pose_scan_vector_.scans.at(i).pose2d.y << " | "<< pose_scan_vector_.scans.at(i).pose2d.theta << std::endl;
-
-			}
-
-			// int checker = 0;
-			// if((current_scan_.ranges.at(j) < (pose_scan_vector_.scans.at(i).ranges.at(j) + tolerance_)) && (current_scan_.ranges.at(j) > (pose_scan_vector_.scans.at(i).ranges.at(j) - tolerance_))){
-			// 	//std::cout << pose_scan_vector_.scans.at(i).pose2d.x << " | " << pose_scan_vector_.scans.at(i).pose2d.y << " | "<< pose_scan_vector_.scans.at(i).pose2d.theta << std::endl;
-			// 	//While element of current scan is within range of the current psv
+		//for(int j = 0; j < pose_scan_vector_.scans.at(i).ranges.size(); j++){
+		//std::cout << averageDifferenceScans(current_scan_, pose_scan_vector_.scans.at(i)) <<std::endl;
+			if(averageDifferenceScans(current_scan_, pose_scan_vector_.scans.at(i)) < tolerance_){
+				ROS_INFO("did we do it we did it");
+				dat_pose_doe_.pose2d.y = pose_scan_vector_.scans.at(i).pose2d.x; //WEIRD NOTE, swapping X and Y here because idk, it got messed up somewhere so im fixing it here
+				dat_pose_doe_.pose2d.x = pose_scan_vector_.scans.at(i).pose2d.y;
+				dat_pose_doe_.pose2d.theta = pose_scan_vector_.scans.at(i).pose2d.theta;
 				
-			// 	checker++;
-			// 	if(checker > 665){
-					
-			// 		checker = 0;
-			// 		ROS_INFO("wat");
-			// 		potentialPoses_.push_back(pose_scan_vector_.scans.at(i).pose2d);
-			// 	} 
-			// }			
-		}
+			}
+
+			
 	}
 
 	for(int i = 0; i < potentialPoses_.size(); i++){	
