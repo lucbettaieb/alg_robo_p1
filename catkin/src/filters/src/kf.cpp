@@ -16,22 +16,40 @@
 #include <geometry_msgs/Twist.h>
 #include <algp1_msgs/Pose2DWithCovariance.h>
 #include <iostream>
+#include <geometry_msgs/PoseStamped.h>
 
 void InvMatrix(float src[][3], float dst[][3]);
+void kf(float prevCov[3][3], algp1_msgs::Pose2DWithCovariance action, algp1_msgs::Pose2DWithCovariance measure);
 
 typedef float array_3x3_type[3][3];
 typedef float array_3x1_type[3];
 
 ros::Publisher pub_state_;
+ros::Publisher pub_stamp_;
 
 ros::Subscriber sub_sense_model_;
 ros::Subscriber sub_vel_model_;
+ros::Subscriber sub_odom_update_;
 
 algp1_msgs::Pose2DWithCovariance vel_model_;
 algp1_msgs::Pose2DWithCovariance sense_model_;
 
 int kalmanIteration = 0;
+float prevX = 0;
+float prevY = 0;
 
+// Callback function for /robot0/odom to update KF on movement
+void updateOnMovement(const nav_msgs::Odometry &odom){
+	if(odom.pose.pose.position.x != prevX && odom.pose.pose.position.y != prevY){
+		ROS_INFO("KF time");
+		prevY = odom.pose.pose.position.y;
+		prevX = odom.pose.pose.position.x;
+		float initCov[3][3] = {{0,0,0},{0,0,0},{0,0,0}};
+
+		kf(initCov, vel_model_, sense_model_);
+	}
+
+}
 
 //Callback function to update the velocity model var
 void updateVelocityModel(const algp1_msgs::Pose2DWithCovariance &vel){
@@ -41,9 +59,9 @@ void updateVelocityModel(const algp1_msgs::Pose2DWithCovariance &vel){
 //Callback function to update the sensor model var
 void updateSensorModel(const algp1_msgs::Pose2DWithCovariance &sen){
 	//sense_model_ = sen;
-	sense_model_.pose2d.x = 1.3;
-	sense_model_.pose2d.y = 1.3;
-	sense_model_.pose2d.theta = 1.3;
+	sense_model_.pose2d.x = sen.pose2d.x;
+	sense_model_.pose2d.y = sen.pose2d.y;
+	sense_model_.pose2d.theta = sen.pose2d.theta;
 
 	sense_model_.covariance[0] = 0.00990099;
 	sense_model_.covariance[1] = 0.00990099;
@@ -186,7 +204,7 @@ void print3x3(float a[3][3]){
 
 void kf(float prevCov[3][3], algp1_msgs::Pose2DWithCovariance action, algp1_msgs::Pose2DWithCovariance measure){
 	bool kill = false;
-	if(kalmanIteration > 10){ //Base case death
+	if(kalmanIteration > 30){ //Base case death
 		kill = true;
 	}
 
@@ -299,10 +317,19 @@ void kf(float prevCov[3][3], algp1_msgs::Pose2DWithCovariance action, algp1_msgs
 
 	//Publish state update
 	algp1_msgs::Pose2DWithCovariance state;
+	geometry_msgs::PoseStamped stamped;
 
 	state.pose2d.x = X_n[0];
 	state.pose2d.y = X_n[1];
 	state.pose2d.theta = X_n[2];
+
+	stamped.pose.position.x = X_n[0];
+	stamped.pose.position.y = X_n[1];
+	stamped.header.seq = 0;
+	stamped.header.stamp = ros::Time::now();
+	stamped.header.frame_id = "map_static";
+
+
 
 	state.covariance[0] = P_n[0][0];
 	state.covariance[1] = P_n[0][1];
@@ -328,11 +355,12 @@ void kf(float prevCov[3][3], algp1_msgs::Pose2DWithCovariance action, algp1_msgs
 
 
 	pub_state_.publish(state);
+	pub_stamp_.publish(stamped);
 	ROS_INFO("pub'd");
 
 	kalmanIteration++;
 	ros::spinOnce();
-	ros::Duration(1).sleep();
+	ros::Duration(.7).sleep();
 	
 	if(!kill)
 		kf(P_n, vel_model_, sense_model_);
@@ -348,14 +376,13 @@ int main(int argc, char** argv){
 	sub_vel_model_ = nh.subscribe("/robot0/vel_model/pose", 10, updateVelocityModel);
 	sub_sense_model_ = nh.subscribe("/sense_model", 10, updateSensorModel);
 
+	sub_odom_update_ = nh.subscribe("/robot0/odom", 10, updateOnMovement);
+
 	//then publish a P(x| the fusion of the two n stuff)
 	pub_state_ = nh.advertise<algp1_msgs::Pose2DWithCovariance>("/robot0/kf/state", 1);
-
-	float initCov[3][3] = {{0,0,0},{0,0,0},{0,0,0}};
+	pub_stamp_ = nh.advertise<geometry_msgs::PoseStamped>("/robot0/kf/stamp", 1);
 
 	//now go forth and do work, son.
-
-	kf(initCov, vel_model_, sense_model_);
 
 	ros::spin();
 	return 0;

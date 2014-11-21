@@ -76,11 +76,13 @@ void updateModel(const nav_msgs::Odometry &odom){
 		//for(int j = 0; j < pose_scan_vector_.scans.at(i).ranges.size(); j++){
 		//std::cout << averageDifferenceScans(current_scan_, pose_scan_vector_.scans.at(i)) <<std::endl;
 			if(averageDifferenceScans(current_scan_, pose_scan_vector_.scans.at(i)) < tolerance_){
-				ROS_INFO("did we do it we did it");
+				//ROS_INFO("did we do it we did it");
 				dat_pose_doe_.pose2d.y = pose_scan_vector_.scans.at(i).pose2d.x; //WEIRD NOTE, swapping X and Y here because idk, it got messed up somewhere so im fixing it here
 				dat_pose_doe_.pose2d.x = pose_scan_vector_.scans.at(i).pose2d.y;
 				dat_pose_doe_.pose2d.theta = pose_scan_vector_.scans.at(i).pose2d.theta;
 				
+
+				pub_model_.publish(dat_pose_doe_);
 			}
 
 			
