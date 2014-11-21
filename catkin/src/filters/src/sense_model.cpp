@@ -60,22 +60,35 @@ int main(int argc, char** argv){
 	pub_newDataBool_ = nh.advertise<std_msgs::Bool>("/update_queue", 1);  //publish a TRUE to get new data.  Upon recieving new data, publish FALSE
 	pub_model_ = nh.advertise<algp1_msgs::Pose2DWithCovariance>("sense_model", 1); //publisher for sensor model
 
-	
-	for(int a = 0; a < 1568; a++){
-		getNewPoseScan();
-		ros::Duration(.1).sleep();
+	geometry_msgs::Pose2D thePose;
 
-		// for(int i = 0; i < pose_scan_.ranges.size(); i++){
-		// 	if((current_scan_.ranges.at(i) < pose_scan_.ranges.at(i) + tolerance_) && current_scan_.ranges.at(i) > pose_scan_.ranges.at(i) - tolerance_){ //if within range
-		// 		potentialPoses_.push_back(pose_scan_.pose2d); //add to potential choices
-		// 	}
-		// }
+	while(ros::ok()){
+		//ROS_INFO("Lets go in a loop!");
+		for(int a = 0; a < 1568; a++){
+			getNewPoseScan();
+			std::cout<<pose_scan_.pose2d.x << " | " << pose_scan_.pose2d.y <<std::endl;
+			ros::Duration(.01).sleep();
 
+			// for(int i = 0; i < pose_scan_.ranges.size(); i++){
+			// 	if((current_scan_.ranges.at(i) < pose_scan_.ranges.at(i) + tolerance_) && current_scan_.ranges.at(i) > pose_scan_.ranges.at(i) - tolerance_){ //if within range
+			// 		potentialPoses_.push_back(pose_scan_.pose2d); //add to potential choices
+			// 	}
+			// }
+			//Check 10 times against first set of data
+			//Loop through all values of PoseScan ranges to see if they are within a tolerance of current noiseyscan
 
-		//Check 10 times against first set of data
-		//Loop through all values of PoseScan ranges to see if they are within a tolerance of current noiseyscan
-		ros::spinOnce();
+			ros::spinOnce();
+		}
+		 
+
+		if(potentialPoses_.size() > 0){
+		 	thePose = potentialPoses_.at(0);
+			
+			std::cout << thePose.x << " | " << thePose.y << std::endl;
+		}
+
+	ros::spinOnce();
 	}
 
-	ros::spin();
+	//ros::spin();
 }

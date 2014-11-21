@@ -29,6 +29,7 @@ int angleCount_ = 2;
 std_msgs::Bool newData_;
 
 void updateBool (const std_msgs::Bool &bol){
+	ROS_INFO("boolean update");
 	newData_.data = bol.data;
 }
 
@@ -119,10 +120,12 @@ int main(int argc, char** argv){
 	ROS_INFO("Parsing file and adding to queue.");
 	parseFile();
 	ROS_INFO("Done adding to queue");
+	
 
 	while(ros::ok()){
-
+		
 		if(newData_.data){
+			ROS_INFO("hi");
 			pub_PoseScan_.publish(scanQueue_.front());
 			scanQueue_.pop();
 			newData_.data = false;
