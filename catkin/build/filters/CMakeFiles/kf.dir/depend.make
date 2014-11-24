@@ -6,6 +6,7 @@ filters/CMakeFiles/kf.dir/src/kf.cpp.o: /opt/ros/hydro/include/XmlRpcDecl.h
 filters/CMakeFiles/kf.dir/src/kf.cpp.o: /opt/ros/hydro/include/XmlRpcValue.h
 filters/CMakeFiles/kf.dir/src/kf.cpp.o: /opt/ros/hydro/include/geometry_msgs/Point.h
 filters/CMakeFiles/kf.dir/src/kf.cpp.o: /opt/ros/hydro/include/geometry_msgs/Pose.h
+filters/CMakeFiles/kf.dir/src/kf.cpp.o: /opt/ros/hydro/include/geometry_msgs/PoseStamped.h
 filters/CMakeFiles/kf.dir/src/kf.cpp.o: /opt/ros/hydro/include/geometry_msgs/PoseWithCovariance.h
 filters/CMakeFiles/kf.dir/src/kf.cpp.o: /opt/ros/hydro/include/geometry_msgs/Quaternion.h
 filters/CMakeFiles/kf.dir/src/kf.cpp.o: /opt/ros/hydro/include/geometry_msgs/Twist.h

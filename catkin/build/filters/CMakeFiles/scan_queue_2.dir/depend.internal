@@ -23,7 +23,6 @@ filters/CMakeFiles/scan_queue_2.dir/src/scan_queue_2.cpp.o
  /opt/ros/hydro/include/ros/message.h
  /opt/ros/hydro/include/ros/message_event.h
  /opt/ros/hydro/include/ros/message_forward.h
- /opt/ros/hydro/include/ros/message_operations.h
  /opt/ros/hydro/include/ros/message_traits.h
  /opt/ros/hydro/include/ros/names.h
  /opt/ros/hydro/include/ros/node_handle.h
@@ -59,4 +58,3 @@ filters/CMakeFiles/scan_queue_2.dir/src/scan_queue_2.cpp.o
  /opt/ros/hydro/include/ros/wall_timer.h
  /opt/ros/hydro/include/ros/wall_timer_options.h
  /opt/ros/hydro/include/rosconsole/macros_generated.h
- /opt/ros/hydro/include/std_msgs/Bool.h

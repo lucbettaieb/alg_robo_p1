@@ -12,6 +12,7 @@ add_message_files(
 	FILES
 	Pose2DWithCovariance.msg
 	PoseScan.msg
+	PoseScanVector.msg
 )
 
 generate_messages(

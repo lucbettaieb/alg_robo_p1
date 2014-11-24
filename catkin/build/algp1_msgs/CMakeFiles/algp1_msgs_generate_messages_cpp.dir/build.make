@@ -43,6 +43,7 @@ CMAKE_BINARY_DIR = /home/luc/ros_workspace/alg_robo_p1/catkin/build
 include algp1_msgs/CMakeFiles/algp1_msgs_generate_messages_cpp.dir/progress.make
 
 algp1_msgs/CMakeFiles/algp1_msgs_generate_messages_cpp: /home/luc/ros_workspace/alg_robo_p1/catkin/devel/include/algp1_msgs/PoseScan.h
+algp1_msgs/CMakeFiles/algp1_msgs_generate_messages_cpp: /home/luc/ros_workspace/alg_robo_p1/catkin/devel/include/algp1_msgs/PoseScanVector.h
 algp1_msgs/CMakeFiles/algp1_msgs_generate_messages_cpp: /home/luc/ros_workspace/alg_robo_p1/catkin/devel/include/algp1_msgs/Pose2DWithCovariance.h
 
 /home/luc/ros_workspace/alg_robo_p1/catkin/devel/include/algp1_msgs/PoseScan.h: /opt/ros/hydro/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
@@ -53,16 +54,26 @@ algp1_msgs/CMakeFiles/algp1_msgs_generate_messages_cpp: /home/luc/ros_workspace/
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from algp1_msgs/PoseScan.msg"
 	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build/algp1_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/hydro/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/PoseScan.msg -Ialgp1_msgs:/home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg -Istd_msgs:/opt/ros/hydro/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/hydro/share/geometry_msgs/cmake/../msg -Inav_msgs:/opt/ros/hydro/share/nav_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/hydro/share/actionlib_msgs/cmake/../msg -p algp1_msgs -o /home/luc/ros_workspace/alg_robo_p1/catkin/devel/include/algp1_msgs -e /opt/ros/hydro/share/gencpp/cmake/..
 
+/home/luc/ros_workspace/alg_robo_p1/catkin/devel/include/algp1_msgs/PoseScanVector.h: /opt/ros/hydro/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/luc/ros_workspace/alg_robo_p1/catkin/devel/include/algp1_msgs/PoseScanVector.h: /home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/PoseScanVector.msg
+/home/luc/ros_workspace/alg_robo_p1/catkin/devel/include/algp1_msgs/PoseScanVector.h: /home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/PoseScan.msg
+/home/luc/ros_workspace/alg_robo_p1/catkin/devel/include/algp1_msgs/PoseScanVector.h: /opt/ros/hydro/share/geometry_msgs/cmake/../msg/Pose2D.msg
+/home/luc/ros_workspace/alg_robo_p1/catkin/devel/include/algp1_msgs/PoseScanVector.h: /opt/ros/hydro/share/gencpp/cmake/../msg.h.template
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luc/ros_workspace/alg_robo_p1/catkin/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from algp1_msgs/PoseScanVector.msg"
+	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build/algp1_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/hydro/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/PoseScanVector.msg -Ialgp1_msgs:/home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg -Istd_msgs:/opt/ros/hydro/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/hydro/share/geometry_msgs/cmake/../msg -Inav_msgs:/opt/ros/hydro/share/nav_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/hydro/share/actionlib_msgs/cmake/../msg -p algp1_msgs -o /home/luc/ros_workspace/alg_robo_p1/catkin/devel/include/algp1_msgs -e /opt/ros/hydro/share/gencpp/cmake/..
+
 /home/luc/ros_workspace/alg_robo_p1/catkin/devel/include/algp1_msgs/Pose2DWithCovariance.h: /opt/ros/hydro/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
 /home/luc/ros_workspace/alg_robo_p1/catkin/devel/include/algp1_msgs/Pose2DWithCovariance.h: /home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/Pose2DWithCovariance.msg
 /home/luc/ros_workspace/alg_robo_p1/catkin/devel/include/algp1_msgs/Pose2DWithCovariance.h: /opt/ros/hydro/share/geometry_msgs/cmake/../msg/Pose2D.msg
 /home/luc/ros_workspace/alg_robo_p1/catkin/devel/include/algp1_msgs/Pose2DWithCovariance.h: /opt/ros/hydro/share/gencpp/cmake/../msg.h.template
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/luc/ros_workspace/alg_robo_p1/catkin/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/luc/ros_workspace/alg_robo_p1/catkin/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from algp1_msgs/Pose2DWithCovariance.msg"
 	cd /home/luc/ros_workspace/alg_robo_p1/catkin/build/algp1_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/hydro/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg/Pose2DWithCovariance.msg -Ialgp1_msgs:/home/luc/ros_workspace/alg_robo_p1/catkin/src/algp1_msgs/msg -Istd_msgs:/opt/ros/hydro/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/hydro/share/geometry_msgs/cmake/../msg -Inav_msgs:/opt/ros/hydro/share/nav_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/hydro/share/actionlib_msgs/cmake/../msg -p algp1_msgs -o /home/luc/ros_workspace/alg_robo_p1/catkin/devel/include/algp1_msgs -e /opt/ros/hydro/share/gencpp/cmake/..
 
 algp1_msgs_generate_messages_cpp: algp1_msgs/CMakeFiles/algp1_msgs_generate_messages_cpp
 algp1_msgs_generate_messages_cpp: /home/luc/ros_workspace/alg_robo_p1/catkin/devel/include/algp1_msgs/PoseScan.h
+algp1_msgs_generate_messages_cpp: /home/luc/ros_workspace/alg_robo_p1/catkin/devel/include/algp1_msgs/PoseScanVector.h
 algp1_msgs_generate_messages_cpp: /home/luc/ros_workspace/alg_robo_p1/catkin/devel/include/algp1_msgs/Pose2DWithCovariance.h
 algp1_msgs_generate_messages_cpp: algp1_msgs/CMakeFiles/algp1_msgs_generate_messages_cpp.dir/build.make
 .PHONY : algp1_msgs_generate_messages_cpp

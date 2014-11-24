@@ -11,7 +11,7 @@
 #include <ros/ros.h>
 
 #include <algp1_msgs/PoseScan.h>
-#include <std_msgs/Bool.h>
+#include <algp1_msgs/PoseScanVector.h>
 
 #include <fstream>
 #include <sstream>
@@ -21,17 +21,9 @@
 #include <queue>
 
 ros::Publisher pub_PoseScan_;	//Publisher to publish a new poseScan
-ros::Subscriber sub_newBool_;	//Boolean to check whether or not to publish a new dataset
-
-std::queue<algp1_msgs::PoseScan> scanQueue_;
+algp1_msgs::PoseScanVector psv;
 
 int angleCount_ = 2;
-std_msgs::Bool newData_;
-
-void updateBool (const std_msgs::Bool &bol){
-	ROS_INFO("boolean update");
-	newData_.data = bol.data;
-}
 
 void parseFile(){
 	algp1_msgs::PoseScan poseScan;
@@ -97,8 +89,8 @@ void parseFile(){
 			}
 
 			//Add to queue
-			scanQueue_.push(poseScan);
-			
+			//scanQueue_.push(poseScan);
+			psv.scans.push_back(poseScan);
 			//pub_PoseScan_.publish(poseScan); //for publishing
 
 			range_vector.clear();
@@ -114,26 +106,22 @@ int main(int argc, char** argv){
 	ros::init(argc, argv, "scan_queue");
 	ros::NodeHandle nh;
 
-	pub_PoseScan_ = nh.advertise<algp1_msgs::PoseScan>("/scan_queue", 1);
-	sub_newBool_ = nh.subscribe("/update_queue", 10, updateBool);
+	pub_PoseScan_ = nh.advertise<algp1_msgs::PoseScanVector>("/scan_map", 1);
 		
 	ROS_INFO("Parsing file and adding to queue.");
 	parseFile();
 	ROS_INFO("Done adding to queue");
-	
+	int it = 0;
 
+	ROS_INFO("Continually publishing PoseScanVector");
 	while(ros::ok()){
-		
-		if(newData_.data){
-			ROS_INFO("hi");
-			pub_PoseScan_.publish(scanQueue_.front());
-			scanQueue_.pop();
-			newData_.data = false;
-		}
 
+		pub_PoseScan_.publish(psv);
+		ROS_INFO("Pub'd.");
+		ros::Duration(1).sleep(); //for publishing
+		
 		ros::spinOnce();
 	}
-
 
 	//ros::spin();
 	return 0;
