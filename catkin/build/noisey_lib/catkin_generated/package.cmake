@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "noisey_lib")
+set(noisey_lib_MAINTAINER "luc <luc@todo.todo>")
+set(noisey_lib_DEPRECATED "")
+set(noisey_lib_VERSION "0.0.0")
+set(noisey_lib_BUILD_DEPENDS "roscpp" "std_msgs" "sensor_msgs" "random")
+set(noisey_lib_RUN_DEPENDS "roscpp" "std_msgs" "sensor_msgs" "random")
+set(noisey_lib_BUILDTOOL_DEPENDS "catkin")

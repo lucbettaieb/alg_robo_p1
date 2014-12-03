@@ -1,0 +1,8 @@
+prefix=/home/luc/ros_workspace/alg_robo_p1/catkin/install
+
+Name: noisey_lib
+Description: Description of noisey_lib
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/luc/ros_workspace/alg_robo_p1/catkin/install/lib 
+Requires: 

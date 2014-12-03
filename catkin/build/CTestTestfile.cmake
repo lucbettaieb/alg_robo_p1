@@ -7,6 +7,7 @@
 SUBDIRS(gtest)
 SUBDIRS(motion)
 SUBDIRS(noisey)
+SUBDIRS(noisey_lib)
 SUBDIRS(stdr_world)
 SUBDIRS(algp1_msgs)
 SUBDIRS(filters)
